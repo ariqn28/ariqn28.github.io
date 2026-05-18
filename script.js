@@ -1,3 +1,6 @@
+// Add js-enabled class to html element for CSS animations
+document.documentElement.classList.add('js-enabled');
+
 // Navigation Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -58,7 +61,7 @@ if (contactForm) {
         // Create mailto link
         const mailtoLink = `mailto:ariqnaufalsyachroni57@gmail.com?subject=Contact from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0ASender Email: ${email}`;
         
-        // Open mail client
+        // Open mail client  
         window.location.href = mailtoLink;
         
         // Reset form
