@@ -7,6 +7,13 @@
     <meta name="keywords" content="Full Stack Developer, Laravel, Vue.js, Web Development, Portfolio">
     <meta name="author" content="Ariqn28">
     
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ariqn28.github.io/">
+    <meta property="og:title" content="Ariq Naufal Syachroni | Full Stack Developer">
+    <meta property="og:description" content="Professional Portfolio of Ariq Naufal Syachroni. Specialized in Laravel & Vue.js.">
+    <meta property="og:image" content="https://ariqn28.github.io/images/ARIQ%20NAUFAL%20SYACHRONI%204X6.JPG.JPEG">
+
     <title>Ariq Naufal Syachroni | Full Stack Developer</title>
     
     <link rel="stylesheet" href="styles.css">
@@ -22,7 +29,7 @@
         max-width: 280px;
         aspect-ratio: 4 / 6;
         margin: 0 auto;
-        display: block !important;
+        display: block;
         position: relative;
         z-index: 5;
         overflow: hidden;
@@ -33,10 +40,23 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 15%; /* Fokus sedikit ke atas tapi tetap memperlihatkan bahu */
+        object-position: center 15%; /* Menjaga tampilan ala pas foto */
+    }
+
+    /* Perbaikan: Memastikan foto muncul di tampilan HP */
+    @media (max-width: 768px) {
+        .about-image {
+            display: block !important;
+            margin-top: 30px;
+            order: -1; /* Foto muncul di atas teks pada mobile */
+        }
     }
 </style>
 </head>
+<script>
+    // Menandai dukungan animasi
+    document.documentElement.classList.add('js-enabled');
+</script>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar">
@@ -297,7 +317,7 @@
                         <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="mailto:ariqnaufalsyachroni57@gmail.com" style="color: var(--primary); text-decoration: none;">ariqnaufalsyachroni57@gmail.com</a></p>
+                            <p><a href="mailto:ariqnaufalsyachroni57@gmail.com" style="color: var(--accent); text-decoration: none;">ariqnaufalsyachroni57@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="info-item">

@@ -56,7 +56,7 @@ if (contactForm) {
         const message = this.querySelector('textarea').value;
         
         // Create mailto link
-        const mailtoLink = `mailto:ariqn28@gmail.com?subject=Portfolio Contact from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0AFrom: ${email}`;
+        const mailtoLink = `mailto:ariqnaufalsyachroni57@gmail.com?subject=Contact from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0ASender Email: ${email}`;
         
         // Open mail client
         window.location.href = mailtoLink;

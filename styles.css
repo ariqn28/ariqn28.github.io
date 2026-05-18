@@ -1115,7 +1115,7 @@ body {
     }
 
     .about-image {
-        display: none;
+        display: block;
     }
 
     .timeline-item:nth-child(even),
