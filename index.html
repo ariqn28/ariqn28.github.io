@@ -19,10 +19,12 @@
     /* Mengatur kontainer gambar agar sesuai rasio 4x6 dan kepala terlihat */
     .image-container {
         width: 100%;
-        max-width: 280px; /* Ukuran yang lebih pas untuk portrait 4x6 */
+        max-width: 280px; 
         aspect-ratio: 4 / 6;
         margin: 0 auto;
-        display: block;
+        display: block !important; /* Memastikan tetap muncul */
+        position: relative;
+        z-index: 5;
     }
     .image-container img {
         width: 100%;
@@ -174,6 +176,16 @@
             </div>
         </div>
     </section>
+
+    <style>
+        /* Perbaikan agar foto tidak hilang di HP */
+        @media (max-width: 768px) {
+            .about-image {
+                display: block !important;
+                margin-top: 30px;
+            }
+        }
+    </style>
 
     <!-- SKILLS SECTION -->
     <section class="skills" id="skills">
