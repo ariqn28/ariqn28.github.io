@@ -1,786 +1,477 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ariq Naufal Syachroni | Full Stack Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Portfolio Ariq Naufal Syachroni - Full Stack Developer spesialis Laravel, Vue.js, REST API, dan aplikasi web modern." />
+<title>Ariq Naufal Syachroni | Full Stack Developer</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            scroll-behavior:smooth;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter', sans-serif;
+    scroll-behavior:smooth;
+}
 
-        body{
-            background:#0f172a;
-            color:#f8fafc;
-            line-height:1.6;
-        }
+body{
+    background-color: #0b1220;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1220 100%);
+    color:#e2e8f0;
+    line-height: 1.6;
+}
 
-        a{
-            text-decoration:none;
-            color:inherit;
-        }
+a{text-decoration:none;color:inherit}
 
-        .container{
-            width:90%;
-            max-width:1200px;
-            margin:auto;
-        }
+/* NAV */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    background: rgba(11, 18, 32, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    padding:18px 8%;
+    z-index:1000;
+}
 
-        /* NAVBAR */
-        nav{
-            position:fixed;
-            top:0;
-            width:100%;
-            z-index:1000;
-            background:#111827;
-            border-bottom:1px solid rgba(255,255,255,0.1);
-        }
+nav h2{
+    color:#0ea5e9;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
 
-        .navbar{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 0;
-        }
+nav a{
+    margin-left:24px;
+    color:#94a3b8;
+    font-weight: 500;
+    transition: color 0.3s;
+}
 
-        .logo{
-            font-size:1.3rem;
-            font-weight:bold;
-            color:#38bdf8;
-        }
+nav a:hover{ color: #0ea5e9; }
 
-        .nav-links{
-            display:flex;
-            gap:25px;
-        }
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 1001;
+    padding: 5px;
+}
 
-        .nav-links a{
-            color:#cbd5e1;
-            transition:0.3s;
-        }
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #38bdf8;
+    border-radius: 3px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .nav-links a:hover{
-            color:#38bdf8;
-        }
+.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* HERO */
-        .hero{
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            padding-top:100px;
-        }
+/* HERO */
+.hero{
+    padding:180px 8% 100px;
+    text-align:center;
+}
 
-        .hero-content{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:50px;
-            align-items:center;
-        }
+.hero h1{ font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; }
+.hero span{ 
+    color:#38bdf8;
+}
 
-        .hero-text h1{
-            font-size:3rem;
-            margin-bottom:15px;
-        }
+.hero p{
+    margin-top:10px;
+    color:#94a3b8;
+}
 
-        .hero-text span{
-            color:#38bdf8;
-        }
+/* Text Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .hero-text h3{
-            color:#94a3b8;
-            margin-bottom:20px;
-            font-weight:normal;
-        }
+/* Apply animation to hero text */
+.hero h1 {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
-        .hero-text p{
-            color:#cbd5e1;
-            margin-bottom:30px;
-        }
+.hero p {
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
 
-        .btn-group{
-            display:flex;
-            gap:15px;
-            flex-wrap:wrap;
-        }
+/* SECTION */
+section{
+    padding:100px 8%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .btn{
-            padding:12px 24px;
-            border-radius:8px;
-            display:inline-block;
-            transition:0.3s;
-            font-weight:bold;
-        }
+.title{
+    text-align:left;
+    margin-bottom:50px;
+    color:#e2e8f0;
+    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+}
 
-        .btn-primary{
-            background:#38bdf8;
-            color:#0f172a;
-        }
+.title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 4px;
+    background: #38bdf8;
+    border-radius: 2px;
+}
 
-        .btn-primary:hover{
-            background:#0ea5e9;
-        }
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
 
-        .btn-secondary{
-            border:1px solid #38bdf8;
-            color:#38bdf8;
-        }
+/* CARD */
+.card{
+    background: rgba(30, 41, 59, 0.5);
+    padding:30px;
+    border-radius:16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
 
-        .btn-secondary:hover{
-            background:#38bdf8;
-            color:#0f172a;
-        }
+.card:hover{
+    transform:translateY(-10px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
 
-        .hero-card{
-            background:#1e293b;
-            padding:30px;
-            border-radius:20px;
-            text-align:center;
-            border:1px solid rgba(255,255,255,0.1);
-        }
+.card h3 {
+    margin-bottom: 12px;
+    color: #f8fafc;
+}
 
-        .hero-card i{
-            font-size:80px;
-            color:#38bdf8;
-            margin-bottom:20px;
-        }
+/* TAG */
+.tag{
+    display:inline-block;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding:6px 10px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight: 600;
+    margin:5px 5px 0 0;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
 
-        /* SECTION */
-        section{
-            padding:90px 0;
-        }
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 20px;
+    background: #38bdf8;
+    color:#0b1220;
+    border-radius:8px;
+    font-weight:700;
+    font-size: 14px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-        .section-title{
-            text-align:center;
-            margin-bottom:50px;
-            font-size:2.2rem;
-            color:#38bdf8;
-        }
+.btn:hover{
+    transform: translateY(-3px);
+    background: #7dd3fc;
+    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
+}
 
-        /* ABOUT */
-        .about{
-            background:#111827;
-        }
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:30px;
+    color:#64748b;
+    border-top:1px solid #1f2937;
+    margin-top: 50px;
+}
 
-        .about-content{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:40px;
-        }
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.2rem; }
+    nav { padding: 18px 5%; }
+    
+    .hamburger { display: flex; }
+    
+    nav .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(11, 18, 32, 0.98);
+        backdrop-filter: blur(15px);
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .about-box{
-            background:#1e293b;
-            padding:30px;
-            border-radius:15px;
-        }
+    nav .nav-links.active { right: 0; }
+    nav .nav-links a { margin: 15px 0; font-size: 1.5rem; margin-left: 0; }
 
-        .about-box h3{
-            margin-bottom:20px;
-            color:#38bdf8;
-        }
+    section { padding: 60px 5%; }
+}
+</style>
 
-        /* SKILLS */
-        .skills-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:20px;
-        }
+<style>
+/* Profile Image Styling */
+.profile-image-container {
+    text-align: center;
+    margin-bottom: 40px; /* Spasi antara gambar dan teks */
+}
 
-        .skill-card{
-            background:#1e293b;
-            padding:25px;
-            border-radius:15px;
-            transition:0.3s;
-        }
+.profile-picture {
+    width: 180px; /* Ukuran gambar */
+    height: 180px; /* Ukuran gambar */
+    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
+    border: 4px solid #38bdf8; /* Border dengan warna aksen */
+    box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.2); /* Efek glow di luar border */
+    transition: transform 0.3s ease-in-out; /* Animasi saat hover */
+}
 
-        .skill-card:hover{
-            transform:translateY(-5px);
-        }
+.profile-picture:hover { transform: scale(1.05); } /* Efek zoom saat hover */
+</style>
 
-        .skill-card h3{
-            margin-bottom:15px;
-            color:#38bdf8;
-        }
-
-        .skill-tags{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-        }
-
-        .skill-tags span{
-            background:#334155;
-            padding:8px 12px;
-            border-radius:8px;
-            font-size:14px;
-        }
-
-        /* EXPERIENCE */
-        .timeline{
-            display:flex;
-            flex-direction:column;
-            gap:25px;
-        }
-
-        .timeline-item{
-            background:#1e293b;
-            padding:25px;
-            border-left:4px solid #38bdf8;
-            border-radius:10px;
-        }
-
-        .timeline-item h3{
-            color:#38bdf8;
-            margin-bottom:10px;
-        }
-
-        .timeline-item small{
-            color:#94a3b8;
-        }
-
-        /* PROJECTS */
-        .projects{
-            background:#111827;
-        }
-
-        .projects-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:25px;
-        }
-
-        .project-card{
-            background:#1e293b;
-            padding:25px;
-            border-radius:15px;
-            transition:0.3s;
-        }
-
-        .project-card:hover{
-            transform:translateY(-5px);
-        }
-
-        .project-card h3{
-            margin:15px 0;
-            color:#38bdf8;
-        }
-
-        .project-card p{
-            color:#cbd5e1;
-            margin-bottom:20px;
-        }
-
-        .project-tech{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-            margin-bottom:20px;
-        }
-
-        .project-tech span{
-            background:#334155;
-            padding:6px 12px;
-            border-radius:8px;
-            font-size:13px;
-        }
-
-        /* CONTACT */
-        .contact-content{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-            gap:30px;
-        }
-
-        .contact-box{
-            background:#1e293b;
-            padding:30px;
-            border-radius:15px;
-        }
-
-        .contact-box h3{
-            margin-bottom:20px;
-            color:#38bdf8;
-        }
-
-        .contact-item{
-            margin-bottom:15px;
-        }
-
-        .contact-item i{
-            color:#38bdf8;
-            margin-right:10px;
-        }
-
-        .socials{
-            margin-top:20px;
-            display:flex;
-            gap:15px;
-        }
-
-        .socials a{
-            width:45px;
-            height:45px;
-            background:#334155;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            border-radius:50%;
-            transition:0.3s;
-        }
-
-        .socials a:hover{
-            background:#38bdf8;
-            color:#0f172a;
-        }
-
-        footer{
-            text-align:center;
-            padding:30px 0;
-            background:#111827;
-            color:#94a3b8;
-        }
-
-        @media(max-width:768px){
-
-            .hero-text h1{
-                font-size:2.2rem;
-            }
-
-            .nav-links{
-                display:none;
-            }
-        }
-    </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
-    <div class="container navbar">
-        <div class="logo">
-            Ariq Naufal Syachroni, S.kom
-        </div>
-
-        <div class="nav-links">
-            <a href="#about">Tentang</a>
-            <a href="#skills">Skill</a>
-            <a href="#experience">Pengalaman</a>
-            <a href="#projects">Project</a>
-            <a href="#contact">Kontak</a>
-        </div>
-    </div>
+<h2>AriqDev</h2>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+<button class="hamburger" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-    <div class="container hero-content">
-
-        <div class="hero-text">
-            <h1>
-                Halo, Saya <span>Ariq Naufal Syachroni</span>
-            </h1>
-
-            <h3>
-                Full Stack Developer | Laravel Developer
-            </h3>
-
-            <p>
-                Full Stack Developer yang berfokus pada pengembangan aplikasi web menggunakan Laravel, Vue.js, REST API, dan teknologi web modern.
-                Berpengalaman dalam membangun aplikasi scalable, manajemen database, serta desain sistem.
-            </p>
-
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">
-                    Lihat Project
-                </a>
-
-                <a href="mailto:ariqnaufalsyachroni57@gmail.com" class="btn btn-secondary">
-                    Hubungi Saya
-                </a>
-            </div>
-        </div>
-
-        <div class="hero-card">
-            <i class="fas fa-code"></i>
-
-            <h2>Tech Stack</h2>
-
-            <p>
-                Laravel • PHP • Vue.js • MySQL • REST API
-            </p>
-        </div>
-
-    </div>
-</section>
+<div class="hero">
+<h1>Hi, I'm <span>Ariq Naufal Syachroni</span></h1>
+<p>Junior Full Stack Developer | Laravel | Vue | API Development</p>
+</div>
 
 <!-- ABOUT -->
-<section class="about" id="about">
+<section id="about">
+<h2 class="title">Profile</h2>
 
-    <div class="container">
+<div class="profile-image-container">
+    <img src="images/ARIQ NAUFAL SYACHRONI 4X6.JPG.JPEG" alt="Ariq Naufal Syachroni" class="profile-picture">
+</div>
 
-        <h2 class="section-title">
-            Tentang Saya
-        </h2>
+<div class="card">
+Lulusan S1 Sistem Informasi dengan fokus Full Stack Development (Laravel & Vue/Nuxt).
+Berpengalaman membangun REST API, authentication, database management, dan UI modern.
+Terbiasa menggunakan AI tools untuk meningkatkan produktivitas pengembangan.
+</div>
+</section>
 
-        <div class="about-content">
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2 class="title">Experience</h2>
 
-            <div class="about-box">
-                <h3>Profil</h3>
+<div class="grid">
 
-                <p>
-                    Lulusan S1 Sistem Informasi dari Institut Digital Ekonomi LPKIA dengan pengalaman dalam pengembangan aplikasi web menggunakan Laravel dan Vue.js.
-                </p>
+<div class="card">
+<h3>IT Support & Data Analyst Junior</h3>
+<p style="color:#94a3b8">LPKIA | Mar 2025 - May 2025</p>
+<p>Analisis data dengan Python & Excel, reporting, dan dukungan aplikasi Laravel.</p>
+</div>
 
-                <br>
+<div class="card">
+<h3>Staff Support Web App</h3>
+<p style="color:#94a3b8">UPT Metrologi Bandung</p>
+<p>Pengelolaan data SPBU, database MySQL, dan maintenance aplikasi Laravel.</p>
+</div>
 
-                <p>
-                    Berpengalaman dalam backend development, integrasi REST API, manajemen database, dan implementasi keamanan aplikasi.
-                </p>
-            </div>
+<div class="card">
+<h3>IT & Multimedia Support</h3>
+<p style="color:#94a3b8">UPT Balai Industri Bandung</p>
+<p>Desain visual, dokumentasi, dan editing multimedia.</p>
+</div>
 
-            <div class="about-box">
-                <h3>Pendidikan</h3>
-
-                <p>
-                    <strong>S1 Sistem Informasi</strong><br>
-                    Institut Digital Ekonomi LPKIA<br>
-                    Lulus Tahun 2025
-                </p>
-
-                <br>
-
-                <h3>Bahasa</h3>
-
-                <p>
-                    Indonesia — Aktif<br>
-                    Inggris — Dasar Profesional
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
+<h2 class="title">Skills</h2>
 
-    <div class="container">
-
-        <h2 class="section-title">
-            Keahlian Teknis
-        </h2>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-                <h3>Backend</h3>
-
-                <div class="skill-tags">
-                    <span>PHP</span>
-                    <span>Laravel</span>
-                    <span>REST API</span>
-                    <span>Authentication</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Frontend</h3>
-
-                <div class="skill-tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Vue.js</span>
-                    <span>Nuxt.js</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Database</h3>
-
-                <div class="skill-tags">
-                    <span>MySQL</span>
-                    <span>PostgreSQL</span>
-                    <span>SQL Server</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Tools</h3>
-
-                <div class="skill-tags">
-                    <span>GitHub</span>
-                    <span>Git</span>
-                    <span>Cloudflare</span>
-                    <span>AWS S3</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>Keamanan</h3>
-
-                <div class="skill-tags">
-                    <span>OWASP</span>
-                    <span>CORS</span>
-                    <span>Best Practices</span>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h3>AI & Design</h3>
-
-                <div class="skill-tags">
-                    <span>GitHub Copilot</span>
-                    <span>Cursor AI</span>
-                    <span>Figma</span>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience" class="projects">
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Pengalaman
-        </h2>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <h3>
-                    IT Support & Junior Data Analyst
-                </h3>
-
-                <small>
-                    Institut Digital Ekonomi LPKIA | Mar 2025 - Mei 2025
-                </small>
-
-                <p>
-                    Mengolah dan menganalisis data menggunakan Python dan Excel, membuat laporan, serta mendukung pengembangan aplikasi Laravel.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <h3>
-                    Staff Support Aplikasi Web
-                </h3>
-
-                <small>
-                    UPT Metrologi Legal Kota Bandung | Agustus 2023
-                </small>
-
-                <p>
-                    Mengelola sistem pengajuan SPBU menggunakan Laravel, menangani database, dan memelihara workflow sistem.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <h3>
-                    Multimedia & IT Support
-                </h3>
-
-                <small>
-                    UPT Balai Dinas Industri Kota Bandung | Okt 2019 - Des 2019
-                </small>
-
-                <p>
-                    Mendesain konten visual, mengelola dokumentasi, dan mengedit aset multimedia.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
+<div class="card">
+<span class="tag">Laravel</span>
+<span class="tag">PHP</span>
+<span class="tag">Vue.js</span>
+<span class="tag">Nuxt.js</span>
+<span class="tag">MySQL</span>
+<span class="tag">REST API</span>
+<span class="tag">Git</span>
+<span class="tag">Python</span>
+<span class="tag">OWASP</span>
+<span class="tag">Figma</span>
+<span class="tag">AWS S3</span>
+</div>
 </section>
 
 <!-- PROJECTS -->
-<section class="projects" id="projects">
+<section id="projects">
+<h2 class="title">Projects (GitHub)</h2>
 
-    <div class="container">
-
-        <h2 class="section-title">
-            Project Unggulan
-        </h2>
-
-        <div class="projects-grid">
-
-            <div class="project-card">
-
-                <i class="fas fa-building fa-2x"></i>
-
-                <h3>Sistem Manajemen RT/RW</h3>
-
-                <p>
-                    Sistem manajemen masyarakat berbasis Laravel dengan fitur pengelolaan warga dan laporan.
-                </p>
-
-                <div class="project-tech">
-                    <span>Laravel</span>
-                    <span>PHP</span>
-                    <span>MySQL</span>
-                </div>
-
-                <a href="https://github.com/ariqn28/RT-RW" target="_blank" class="btn btn-primary">
-                    GitHub
-                </a>
-
-            </div>
-
-            <div class="project-card">
-
-                <i class="fas fa-shopping-cart fa-2x"></i>
-
-                <h3>Aplikasi Marketplace</h3>
-
-                <p>
-                    Aplikasi marketplace berbasis Laravel dengan fitur autentikasi dan manajemen produk.
-                </p>
-
-                <div class="project-tech">
-                    <span>Laravel</span>
-                    <span>Blade</span>
-                    <span>MySQL</span>
-                </div>
-
-                <a href="https://github.com/ariqn28" target="_blank" class="btn btn-primary">
-                    GitHub
-                </a>
-
-            </div>
-
-            <div class="project-card">
-
-                <i class="fas fa-gas-pump fa-2x"></i>
-
-                <h3>Sistem Pengajuan SPBU</h3>
-
-                <p>
-                    Sistem pengajuan dan registrasi SPBU dengan fitur workflow dan manajemen dokumen.
-                </p>
-
-                <div class="project-tech">
-                    <span>Node.js</span>
-                    <span>JavaScript</span>
-                    <span>MySQL</span>
-                </div>
-
-                <a href="https://github.com/ariqn28" target="_blank" class="btn btn-primary">
-                    GitHub
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<div id="repo" class="grid"></div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
+<h2 class="title">Contact</h2>
 
-    <div class="container">
+<div class="grid">
 
-        <h2 class="section-title">
-            Kontak
-        </h2>
+<!-- INFO -->
+<div class="card">
+<h3>Get In Touch</h3>
 
-        <div class="contact-content">
+<p style="margin-top:10px;">
+<b>Email:</b><br>
+<a href="mailto:ariqnaufalsyachroni57@gmail.com" style="color:#38bdf8;">
+ariqnaufalsyachroni57@gmail.com
+</a>
+</p>
 
-            <div class="contact-box">
+<p style="margin-top:10px;">
+<b>WhatsApp:</b><br>
+<a href="https://wa.me/62857223708820" target="_blank" style="color:#38bdf8;">
++62 857-2237-08820
+</a>
+</p>
 
-                <h3>Hubungi Saya</h3>
+<p style="margin-top:10px;color:#94a3b8;">
+Bandung, Indonesia
+</p>
+</div>
 
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    ariqnaufalsyachroni57@gmail.com
-                </div>
+<!-- SOCIAL -->
+<div class="card">
+<h3>Social Media</h3>
 
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    +62 857-2237-08820
-                </div>
+<a class="btn" href="https://www.instagram.com/riqqfals_" target="_blank">
+<i class="fab fa-instagram"></i> Instagram
+</a>
 
-                <div class="contact-item">
-                    <i class="fas fa-location-dot"></i>
-                    Bandung, Indonesia
-                </div>
+<a class="btn" href="https://www.facebook.com/riqqyourbae" target="_blank">
+<i class="fab fa-facebook"></i> Facebook
+</a>
 
-                <div class="socials">
+<a class="btn" href="https://www.linkedin.com/in/ariq-naufal-syachroni-671b892b8" target="_blank">
+<i class="fab fa-linkedin"></i> LinkedIn
+</a>
 
-                    <a href="https://github.com/ariqn28" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
+<a class="btn" href="mailto:ariqnaufalsyachroni57@gmail.com">
+<i class="fas fa-envelope"></i> Email
+</a>
 
-                    <a href="https://instagram.com/riqqfals_" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+</div>
 
-                    <a href="https://www.linkedin.com/in/ariq-naufal-syachroni-671b892b8" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="https://www.facebook.com/riqqyourbae" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="contact-box">
-
-                <h3>Mari Bekerja Sama</h3>
-
-                <p>
-                    Terbuka untuk freelance, internship, junior developer, dan peluang kolaborasi lainnya.
-                </p>
-
-                <br>
-
-                <a href="mailto:ariqnaufalsyachroni57@gmail.com" class="btn btn-primary">
-                    Kirim Email
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
+© 2026 Ariq Naufal Syachroni
+</footer>
 
-    <div class="container">
+<!-- GITHUB PROJECTS -->
+<script>
+// Hamburger Toggle Logic
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-        <p>
-            © 2026 Ariq Naufal Syachroni. All Rights Reserved.
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Auto-close menu when link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+const repos = [
+  "RT-RW",
+  "Pengajuan_spbu",
+  "markeplace-app"
+];
+
+const container = document.getElementById("repo");
+
+repos.forEach(name => {
+  fetch(`https://api.github.com/repos/ariqn28/${name}`)
+  .then(res => res.json())
+  .then(repo => {
+    container.innerHTML += `
+      <div class="card">
+        <h3>${repo.name}</h3>
+        <p style="color:#94a3b8;margin-top:8px;">
+          ${repo.description || "No description"}
         </p>
 
-    </div>
+        <span class="tag">${repo.language || "Project"}</span>
 
-</footer>
+        <br>
+
+        <a class="btn" href="${repo.html_url}" target="_blank">
+          View Project
+        </a>
+      </div>
+    `;
+  });
+});
+</script>
 
 </body>
 </html>
