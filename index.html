@@ -1,477 +1,341 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ariq Naufal Syachroni | Full Stack Developer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ariqn28 - Full Stack Developer | Portfolio & Professional Profile">
+    <meta name="keywords" content="Full Stack Developer, Laravel, Vue.js, Web Development, Portfolio">
+    <meta name="author" content="Ariqn28">
+    
+    <title>Ariq Naufal Syachroni | Full Stack Developer</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter', sans-serif;
-    scroll-behavior:smooth;
-}
-
-body{
-    background-color: #0b1220;
-    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b1220 100%);
-    color:#e2e8f0;
-    line-height: 1.6;
-}
-
-a{text-decoration:none;color:inherit}
-
-/* NAV */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    background: rgba(11, 18, 32, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-    padding:18px 8%;
-    z-index:1000;
-}
-
-nav h2{
-    color:#0ea5e9;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-nav a{
-    margin-left:24px;
-    color:#94a3b8;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-nav a:hover{ color: #0ea5e9; }
-
-/* Hamburger Menu Styles */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    z-index: 1001;
-    padding: 5px;
-}
-
-.hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #38bdf8;
-    border-radius: 3px;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-/* HERO */
-.hero{
-    padding:180px 8% 100px;
-    text-align:center;
-}
-
-.hero h1{ font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; }
-.hero span{ 
-    color:#38bdf8;
-}
-
-.hero p{
-    margin-top:10px;
-    color:#94a3b8;
-}
-
-/* Text Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Apply animation to hero text */
-.hero h1 {
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.hero p {
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
-    opacity: 0;
-}
-
-/* SECTION */
-section{
-    padding:100px 8%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.title{
-    text-align:left;
-    margin-bottom:50px;
-    color:#e2e8f0;
-    font-size: 2rem;
-    position: relative;
-    display: inline-block;
-}
-
-.title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 50px;
-    height: 4px;
-    background: #38bdf8;
-    border-radius: 2px;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-
-/* CARD */
-.card{
-    background: rgba(30, 41, 59, 0.5);
-    padding:30px;
-    border-radius:16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: 100%;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    background: rgba(30, 41, 59, 0.8);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.card h3 {
-    margin-bottom: 12px;
-    color: #f8fafc;
-}
-
-/* TAG */
-.tag{
-    display:inline-block;
-    background: rgba(56, 189, 248, 0.1);
-    color: #38bdf8;
-    padding:6px 10px;
-    border-radius:6px;
-    font-size:12px;
-    font-weight: 600;
-    margin:5px 5px 0 0;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    background: #38bdf8;
-    color:#0b1220;
-    border-radius:8px;
-    font-weight:700;
-    font-size: 14px;
-    transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.btn:hover{
-    transform: translateY(-3px);
-    background: #7dd3fc;
-    box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.4);
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    color:#64748b;
-    border-top:1px solid #1f2937;
-    margin-top: 50px;
-}
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.2rem; }
-    nav { padding: 18px 5%; }
-    
-    .hamburger { display: flex; }
-    
-    nav .nav-links {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        right: -100%;
+    /* Mengatur kontainer gambar agar sesuai rasio 4x6 dan kepala terlihat */
+    .image-container {
         width: 100%;
-        height: 100vh;
-        background: rgba(11, 18, 32, 0.98);
-        backdrop-filter: blur(15px);
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        max-width: 280px; /* Ukuran yang lebih pas untuk portrait 4x6 */
+        aspect-ratio: 4 / 6;
+        margin: 0 auto;
+        display: block;
     }
-
-    nav .nav-links.active { right: 0; }
-    nav .nav-links a { margin: 15px 0; font-size: 1.5rem; margin-left: 0; }
-
-    section { padding: 60px 5%; }
-}
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%; /* Menyesuaikan agar badan/bahu lebih terlihat seperti pas foto */
+        border-radius: 20px;
+        border: 2px solid rgba(99, 102, 241, 0.3);
+    }
 </style>
-
-<style>
-/* Profile Image Styling */
-.profile-image-container {
-    text-align: center;
-    margin-bottom: 40px; /* Spasi antara gambar dan teks */
-}
-
-.profile-picture {
-    width: 180px; /* Ukuran gambar */
-    height: 180px; /* Ukuran gambar */
-    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
-    object-fit: cover; /* Memastikan gambar mengisi area tanpa terdistorsi */
-    border: 4px solid #38bdf8; /* Border dengan warna aksen */
-    box-shadow: 0 0 0 8px rgba(56, 189, 248, 0.2); /* Efek glow di luar border */
-    transition: transform 0.3s ease-in-out; /* Animasi saat hover */
-}
-
-.profile-picture:hover { transform: scale(1.05); } /* Efek zoom saat hover */
-</style>
-
 </head>
-
 <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">
+                <i class="fas fa-code"></i> Ariqn28
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-<!-- NAV -->
-<nav>
-<h2>AriqDev</h2>
-<div class="nav-links">
-<a href="#about">About</a>
-<a href="#experience">Experience</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-<button class="hamburger" aria-label="Toggle navigation">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
-</nav>
+    <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ariq Naufal Syachroni</span></h1>
+                <p class="hero-subtitle">Full Stack Developer & Creative Problem Solver</p>
+                <p class="hero-description">
+                    Crafting elegant solutions through full-stack development. Specialized in Laravel & Vue.js with a passion for building scalable web applications and beautiful user experiences.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-arrow-down"></i> View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Published</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Commitment</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <div style="font-weight: 600;">Tech Stack</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light);">Laravel • Vue.js • MySQL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- HERO -->
-<div class="hero">
-<h1>Hi, I'm <span>Ariq Naufal Syachroni</span></h1>
-<p>Junior Full Stack Developer | Laravel | Vue | API Development</p>
-</div>
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Get to know more about me and my professional journey</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        I'm a passionate Full Stack Developer with a Bachelor's degree in Information Systems from Institut Digital Ekonomi LPKIA. My journey in web development has been driven by a love for clean code, innovative solutions, and continuous learning.
+                    </p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Education</h4>
+                                <p>S1 Sistem Informasi - Graduated 2025</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Specialization</h4>
+                                <p>Full Stack Web Development</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <h4>Experience</h4>
+                                <p>3+ Years in Web Development</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h4>Passion</h4>
+                                <p>Building scalable & beautiful apps</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="about-detail">
+                        My expertise spans backend development with PHP & Laravel, frontend development with HTML5, CSS3, JavaScript, and Vue.js/Nuxt.js. I'm experienced in REST API development, database management, security implementation, and system design using UML & ERD. I leverage AI tools like GitHub Copilot and Cursor to enhance productivity while maintaining code quality.
+                    </p>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="images/ARIQ NAUFAL SYACHRONI 4X6.JPG.JPEG" alt="Ariq Naufal Syachroni">
+                        <div class="tech-icon tech-1" title="Backend">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="tech-icon tech-2" title="Frontend">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="tech-icon tech-3" title="Database">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ABOUT -->
-<section id="about">
-<h2 class="title">Profile</h2>
+    <!-- SKILLS SECTION -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">REST API</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Frontend</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Vue.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="profile-image-container">
-    <img src="images/ARIQ NAUFAL SYACHRONI 4X6.JPG.JPEG" alt="Ariq Naufal Syachroni" class="profile-picture">
-</div>
+    <!-- PROJECTS SECTION -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A collection of my recent web development work</p>
+            <div class="projects-grid">
+                <!-- Project 1: RT-RW -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ariqn28/RT-RW" target="_blank" class="project-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>RT-RW Management System</h3>
+                    <p>Sistem manajemen lingkungan untuk administrasi RT/RW. Mengelola data warga, rapat, dan kegiatan warga dengan fitur lengkap.</p>
+                    <div class="project-tech">
+                        <span>PHP</span>
+                        <span>Laravel</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
 
-<div class="card">
-Lulusan S1 Sistem Informasi dengan fokus Full Stack Development (Laravel & Vue/Nuxt).
-Berpengalaman membangun REST API, authentication, database management, dan UI modern.
-Terbiasa menggunakan AI tools untuk meningkatkan produktivitas pengembangan.
-</div>
-</section>
+                <!-- Project 2: Marketplace App -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ariqn28/markeplace-app" target="_blank" class="project-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Marketplace App</h3>
+                    <p>Aplikasi marketplace lengkap yang dibangun dengan Laravel dan Blade engine untuk pengalaman jual beli yang mulus.</p>
+                    <div class="project-tech">
+                        <span>Blade</span>
+                        <span>Laravel</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-<h2 class="title">Experience</h2>
+                <!-- Project 3: Pengajuan SPBU -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-gas-pump"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ariqn28/Pengajuan_spbu" target="_blank" class="project-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Pengajuan SPBU</h3>
+                    <p>Sistem manajemen pengajuan SPBU dengan pelacakan aplikasi dan alur kerja persetujuan menggunakan Node.js.</p>
+                    <div class="project-tech">
+                        <span>JavaScript</span>
+                        <span>Node.js</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="grid">
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:ariqnaufalsyachroni57@gmail.com" style="color: var(--primary); text-decoration: none;">ariqnaufalsyachroni57@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>085723708820</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Bandung, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="card">
-<h3>IT Support & Data Analyst Junior</h3>
-<p style="color:#94a3b8">LPKIA | Mar 2025 - May 2025</p>
-<p>Analisis data dengan Python & Excel, reporting, dan dukungan aplikasi Laravel.</p>
-</div>
+            <!-- Social Links -->
+            <div class="social-links">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://github.com/ariqn28" target="_blank" rel="noopener noreferrer" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ariq-naufal-syachroni-671b892b8" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/riqqyourbae" target="_blank" rel="noopener noreferrer" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/riqqfals_" target="_blank" rel="noopener noreferrer" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:ariqnaufalsyachroni57@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
 
-<div class="card">
-<h3>Staff Support Web App</h3>
-<p style="color:#94a3b8">UPT Metrologi Bandung</p>
-<p>Pengelolaan data SPBU, database MySQL, dan maintenance aplikasi Laravel.</p>
-</div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ariqn28. All rights reserved.</p>
+        </div>
+    </footer>
 
-<div class="card">
-<h3>IT & Multimedia Support</h3>
-<p style="color:#94a3b8">UPT Balai Industri Bandung</p>
-<p>Desain visual, dokumentasi, dan editing multimedia.</p>
-</div>
-
-</div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-<h2 class="title">Skills</h2>
-
-<div class="card">
-<span class="tag">Laravel</span>
-<span class="tag">PHP</span>
-<span class="tag">Vue.js</span>
-<span class="tag">Nuxt.js</span>
-<span class="tag">MySQL</span>
-<span class="tag">REST API</span>
-<span class="tag">Git</span>
-<span class="tag">Python</span>
-<span class="tag">OWASP</span>
-<span class="tag">Figma</span>
-<span class="tag">AWS S3</span>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-<h2 class="title">Projects (GitHub)</h2>
-
-<div id="repo" class="grid"></div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2 class="title">Contact</h2>
-
-<div class="grid">
-
-<!-- INFO -->
-<div class="card">
-<h3>Get In Touch</h3>
-
-<p style="margin-top:10px;">
-<b>Email:</b><br>
-<a href="mailto:ariqnaufalsyachroni57@gmail.com" style="color:#38bdf8;">
-ariqnaufalsyachroni57@gmail.com
-</a>
-</p>
-
-<p style="margin-top:10px;">
-<b>WhatsApp:</b><br>
-<a href="https://wa.me/62857223708820" target="_blank" style="color:#38bdf8;">
-+62 857-2237-08820
-</a>
-</p>
-
-<p style="margin-top:10px;color:#94a3b8;">
-Bandung, Indonesia
-</p>
-</div>
-
-<!-- SOCIAL -->
-<div class="card">
-<h3>Social Media</h3>
-
-<a class="btn" href="https://www.instagram.com/riqqfals_" target="_blank">
-<i class="fab fa-instagram"></i> Instagram
-</a>
-
-<a class="btn" href="https://www.facebook.com/riqqyourbae" target="_blank">
-<i class="fab fa-facebook"></i> Facebook
-</a>
-
-<a class="btn" href="https://www.linkedin.com/in/ariq-naufal-syachroni-671b892b8" target="_blank">
-<i class="fab fa-linkedin"></i> LinkedIn
-</a>
-
-<a class="btn" href="mailto:ariqnaufalsyachroni57@gmail.com">
-<i class="fas fa-envelope"></i> Email
-</a>
-
-</div>
-
-</div>
-</section>
-
-<footer>
-© 2026 Ariq Naufal Syachroni
-</footer>
-
-<!-- GITHUB PROJECTS -->
-<script>
-// Hamburger Toggle Logic
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Auto-close menu when link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
-const repos = [
-  "RT-RW",
-  "Pengajuan_spbu",
-  "markeplace-app"
-];
-
-const container = document.getElementById("repo");
-
-repos.forEach(name => {
-  fetch(`https://api.github.com/repos/ariqn28/${name}`)
-  .then(res => res.json())
-  .then(repo => {
-    container.innerHTML += `
-      <div class="card">
-        <h3>${repo.name}</h3>
-        <p style="color:#94a3b8;margin-top:8px;">
-          ${repo.description || "No description"}
-        </p>
-
-        <span class="tag">${repo.language || "Project"}</span>
-
-        <br>
-
-        <a class="btn" href="${repo.html_url}" target="_blank">
-          View Project
-        </a>
-      </div>
-    `;
-  });
-});
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
