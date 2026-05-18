@@ -16,23 +16,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    /* Mengatur kontainer gambar agar sesuai rasio 4x6 dan kepala terlihat */
+    /* Styling Pas Foto 4x6 agar badan dan kepala terlihat proporsional */
     .image-container {
         width: 100%;
-        max-width: 280px; 
+        max-width: 280px;
         aspect-ratio: 4 / 6;
         margin: 0 auto;
-        display: block !important; /* Memastikan tetap muncul */
+        display: block !important;
         position: relative;
         z-index: 5;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 2px solid rgba(99, 102, 241, 0.3);
     }
     .image-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 20%; /* Menyesuaikan agar badan/bahu lebih terlihat seperti pas foto */
-        border-radius: 20px;
-        border: 2px solid rgba(99, 102, 241, 0.3);
+        object-position: center 15%; /* Fokus sedikit ke atas tapi tetap memperlihatkan bahu */
     }
 </style>
 </head>
