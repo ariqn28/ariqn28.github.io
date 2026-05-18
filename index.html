@@ -27,21 +27,21 @@
     .image-container {
         width: 100%;
         max-width: 280px;
-        aspect-ratio: 4 / 6 !important;
+        aspect-ratio: 4 / 6;
         margin: 0 auto;
-        display: block !important;
+        display: block;
         position: relative;
         z-index: 5;
         overflow: hidden;
         border-radius: 20px;
         border: 2px solid rgba(99, 102, 241, 0.3);
-        height: auto;
+        background-color: #1e293b; /* Placeholder warna jika gambar lambat muat */
     }
     .image-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 10%; /* Sedikit penyesuaian agar lebih pas */
+        object-position: center 10%;
     }
 
     /* Perbaikan: Memastikan foto muncul di tampilan HP */
@@ -183,7 +183,7 @@
                 
                 <div class="about-image">
                     <div class="image-container">
-                        <img src="images/ARIQ%20NAUFAL%20SYACHRONI%204X6.JPG.JPEG" alt="Ariq Naufal Syachroni">
+                        <img src="images/ARIQ%20NAUFAL%20SYACHRONI%204X6.JPG.JPEG" alt="Ariq Naufal Syachroni" onerror="this.src='https://via.placeholder.com/400x600?text=Foto+Tidak+Ditemukan'">
                         <div class="tech-icon tech-1" title="Backend">
                             <i class="fas fa-server"></i>
                         </div>
