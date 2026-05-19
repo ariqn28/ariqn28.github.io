@@ -59,8 +59,8 @@
      * -------------------------------------------------- */
     var ssMoveHeader = function () {
 
-        var hero = $('.page-hero'),
-            hdr = $('header'),
+        var hero = $('.hero'),
+            hdr = $('.navbar'),
             triggerHeight = hero.outerHeight() - 170;
 
 
@@ -413,7 +413,7 @@
     * ------------------------------------------------------ */
     (function ssInit() {
 
-        ssPreloader();
+        // ssPreloader(); 
         ssPrettyPrint();
         ssMoveHeader();
         ssMobileMenu();

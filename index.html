@@ -55,7 +55,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Hi, I'm <span class="gradient-text">Ariq Naufal Syachroni</span></h1>
-                <p class="hero-subtitle">Full Stack Developer & Creative Problem Solver</p>
+                <p class="hero-subtitle">Full Stack Developer & Data Analyst</p>
                 <p class="hero-description">
                     Crafting elegant solutions through full-stack development. Specialized in Laravel & Vue.js with a passion for building scalable web applications and beautiful user experiences.
                 </p>
@@ -86,6 +86,11 @@
             </div>
             
             <div class="hero-visual">
+                <div class="hero-img-wrapper">
+                    <img src="images/profile.webp" alt="Ariq Naufal Syachroni" class="hero-img-main" 
+                         onerror="this.src='https://via.placeholder.com/500x500?text=Ariq+Naufal'">
+                </div>
+                
                 <div class="floating-card">
                     <i class="fas fa-code"></i>
                     <div>
@@ -162,10 +167,13 @@
             </div>
         </div>
     <!-- SKILLS SECTION -->
+    </section>
+
     <section class="skills" id="skills">
         <div class="container">
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-container">
+
                 <div class="skill-category">
                     <h3><i class="fas fa-server"></i> Backend</h3>
                     <div class="skill-items">
@@ -195,6 +203,9 @@
             <div class="projects-grid">
                 <!-- Project 1: RT-RW -->
                 <div class="project-card">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x250?text=RT-RW+Project" alt="RT-RW System" loading="lazy">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-building"></i>
@@ -216,6 +227,9 @@
 
                 <!-- Project 2: Marketplace App -->
                 <div class="project-card">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x250?text=Marketplace+App" alt="Marketplace App">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-shopping-cart"></i>
@@ -237,6 +251,9 @@
 
                 <!-- Project 3: Pengajuan SPBU -->
                 <div class="project-card">
+                    <div class="project-thumbnail">
+                        <img src="https://via.placeholder.com/400x250?text=Pengajuan+SPBU" alt="Pengajuan SPBU">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-gas-pump"></i>
@@ -322,6 +339,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Java Script -->
+    <script src="js/jquery-3.2.1.min.js" defer></script>
+    <!-- plugins.js hanya diperlukan jika Anda menggunakan slider/gallery di halaman ini. 
+         Jika tidak, Anda bisa menghapusnya untuk mempercepat loading. -->
+    <script src="js/plugins.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
