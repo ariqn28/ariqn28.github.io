@@ -37,15 +37,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navbar Background Change on Scroll
 const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-        navbar.style.backdropFilter = 'blur(20px)';
-    } else {
-        navbar.style.background = 'rgba(10, 14, 39, 0.8)';
-        navbar.style.backdropFilter = 'blur(10px)';
-    }
-});
+
+// Cache sections and nav links for active link computation
+const sections = Array.from(document.querySelectorAll('section[id]'));
+const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
+
+// Throttled scroll handler using requestAnimationFrame
+let ticking = false;
+function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Navbar background
+        if (navbar) {
+            if (scrollY > 50) {
+                navbar.style.background = 'rgba(10, 14, 39, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'rgba(10, 14, 39, 0.8)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            }
+        }
+
+        // Parallax hero
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.transform = `translateY(${scrollY * 0.5}px)`;
+        }
+
+        // Active nav link (compute based on viewport)
+        const offset = 200;
+        let current = '';
+        for (const section of sections) {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= offset && rect.bottom > offset) {
+                current = section.id;
+                break;
+            }
+        }
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href').slice(1) === current);
+        });
+
+        // Initialize animations for elements in view (lightweight check)
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        animatedElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight) el.classList.add('animated');
+        });
+
+        ticking = false;
+    });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
 
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
@@ -95,28 +142,7 @@ document.querySelectorAll('.project-card, .skill-category, .cert-card, .timeline
     observer.observe(el);
 });
 
-// Active Navigation Link
-function updateActiveLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-}
 
-window.addEventListener('scroll', updateActiveLink);
 
 // Cursor effect (optional - adds a trailing cursor effect)
 const createCursorFollower = () => {
@@ -145,14 +171,7 @@ const createCursorFollower = () => {
 // Uncomment to enable cursor follower
 // createCursorFollower();
 
-// Parallax effect on hero section
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        const scrolled = window.pageYOffset;
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// Parallax handled inside throttled scroll handler above
 
 // Add scroll to top button
 const createScrollToTop = () => {
@@ -222,26 +241,7 @@ document.querySelectorAll('img[data-src]').forEach(img => {
     imageObserver.observe(img);
 });
 
-// Add active class to nav link on scroll
-const addActiveLink = () => {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.clientHeight;
-        
-        if (window.scrollY >= top - 200 && window.scrollY < top + height - 200) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.nav-menu a[href="#${section.id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-    });
-};
-
-window.addEventListener('scroll', addActiveLink);
+// Active nav link handled by consolidated scroll handler above
 
 // Initialize AOS-like animations
 const initAnimations = () => {
@@ -255,6 +255,5 @@ const initAnimations = () => {
 };
 
 window.addEventListener('load', initAnimations);
-window.addEventListener('scroll', initAnimations);
 
 console.log('Portfolio loaded successfully! 🚀');

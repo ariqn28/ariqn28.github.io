@@ -17,7 +17,8 @@
     <title>Ariq Naufal Syachroni | Full Stack Developer</title>
     
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -147,7 +148,7 @@
                 
                 <div class="about-image">
                     <div class="image-container">
-                        <img src="images/profile.webp" alt="Ariq Naufal Syachroni" onerror="this.src='https://via.placeholder.com/400x600?text=Foto+Tidak+Ditemukan'">
+                        <img data-src="images/ARIQ NAUFAL SYACHRONI 4x6.jpg.jpeg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Ariq Naufal Syachroni" loading="lazy" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x600?text=Foto+Tidak+Ditemukan'">
                         <div class="tech-icon tech-1" title="Backend">
                             <i class="fas fa-server"></i>
                         </div>
@@ -187,6 +188,97 @@
         </div>
     </section>
 
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">My journey through internships and professional roles</p>
+            <div class="experience-timeline">
+                <!-- Experience 1: IT Support & Junior Data Analyst -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="experience-content">
+                            <h3>IT Support & Junior Data Analyst</h3>
+                            <p class="experience-organization">Program Studi Sistem Informasi, Institut Digital Ekonomi LPKIA</p>
+                            <p class="experience-date"><i class="fas fa-calendar"></i> Maret 2025 – Mei 2025</p>
+                        </div>
+                    </div>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Memproses dan menganalisis data menggunakan Python dan Microsoft Excel untuk menghasilkan wawasan bisnis.</li>
+                            <li>Melakukan pembersihan data, validasi, dan pemrosesan kumpulan data untuk memastikan akurasi dan kesiapan untuk analisis.</li>
+                            <li>Menyiapkan laporan dan visualisasi data untuk mendukung pengambilan keputusan.</li>
+                            <li>Mendukung pengembangan dan pemeliharaan aplikasi internal yang dibangun dengan Laravel.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2: UPT Metrologi Legal -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="experience-content">
+                            <h3>Staf Pendukung</h3>
+                            <p class="experience-organization">UPT Metrologi Legal Kota Bandung</p>
+                            <p class="experience-date"><i class="fas fa-calendar"></i> Agustus 2023 – Agustus 2023</p>
+                        </div>
+                    </div>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Mengelola data pendaftaran SPBU melalui aplikasi berbasis Laravel, termasuk proses entri data, verifikasi, dan validasi.</li>
+                            <li>Mengembangkan dan memelihara fitur pada aplikasi web Laravel, termasuk perbaikan bug serta penyesuaian alur kerja (workflow) sistem.</li>
+                            <li>Mengelola database menggunakan SQL Server/MySQL untuk kebutuhan pemrosesan data, query, dan pembuatan laporan dalam aplikasi Laravel.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3: UPT Balai Dinas Industri -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="experience-content">
+                            <h3>Multimedia & IT Support</h3>
+                            <p class="experience-organization">UPT Balai Dinas Industri Kota Bandung</p>
+                            <p class="experience-date"><i class="fas fa-calendar"></i> Oktober 2019 – Desember 2019</p>
+                        </div>
+                    </div>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Merancang konten visual seperti poster, spanduk, dan materi publikasi digital.</li>
+                            <li>Mengelola dokumentasi acara, termasuk perekaman foto dan video, dan melakukan pengeditan menggunakan perangkat lunak multimedia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-timeline">
+                <div class="education-card">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Sarjana Sistem Informasi</h3>
+                        <p class="education-institution">Institut Digital Ekonomi LPKIA</p>
+                        <p class="education-year"><i class="fas fa-calendar-alt"></i> Graduated pada tahun 2025</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PROJECTS SECTION -->
     <section class="projects" id="projects">
         <div class="container">
@@ -195,6 +287,9 @@
             <div class="projects-grid">
                 <!-- Project 1: RT-RW -->
                 <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=RT-RW+Preview" alt="RT-RW Management System" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-building"></i>
@@ -216,6 +311,9 @@
 
                 <!-- Project 2: Marketplace App -->
                 <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=Marketplace+Preview" alt="Marketplace App" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-shopping-cart"></i>
@@ -237,6 +335,9 @@
 
                 <!-- Project 3: Pengajuan SPBU -->
                 <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=SPBU+Preview" alt="Pengajuan SPBU" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
+                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-gas-pump"></i>
@@ -253,6 +354,30 @@
                         <span>JavaScript</span>
                         <span>Node.js</span>
                         <span>MySQL</span>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Admin Dashboard -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://via.placeholder.com/600x400?text=Dashboard+Preview" alt="Admin Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
+                    </div>
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="project-link" title="View">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Dashboard untuk monitoring dan analitik aplikasi.</p>
+                    <div class="project-tech">
+                        <span>Vue.js</span>
+                        <span>Chart.js</span>
+                        <span>Laravel</span>
                     </div>
                 </div>
             </div>
@@ -322,6 +447,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
