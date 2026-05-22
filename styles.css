@@ -37,6 +37,19 @@ body {
     padding: 0 20px;
 }
 
+/* ============ REVEAL ANIMATION ============ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ============ NAVIGATION ============ */
 .navbar {
     position: fixed;
@@ -138,6 +151,7 @@ body {
     background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     animation: float 20s ease-in-out infinite;
+    will-change: transform;
 }
 
 .hero .container {
@@ -256,11 +270,31 @@ body {
     justify-content: center;
 }
 
+.hero-img-wrapper {
+    width: 320px;
+    height: 320px;
+    position: relative;
+    z-index: 5;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    overflow: hidden;
+    border: 8px solid rgba(99, 102, 241, 0.1);
+    animation: blobAnimation 10s infinite alternate;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    will-change: border-radius;
+}
+
+.hero-img-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .blob {
     position: absolute;
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
     animation: blobAnimation 15s infinite;
+    will-change: border-radius;
 }
 
 .blob-1 {
@@ -557,7 +591,8 @@ body {
     padding: 2rem;
     border-radius: 15px;
     transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .skill-category:hover {
@@ -565,6 +600,10 @@ body {
     border-color: var(--primary);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.skill-category.active {
+    animation: slideInUp 0.8s ease-out forwards;
 }
 
 .skill-category h3 {
@@ -608,7 +647,8 @@ body {
 
 .timeline-item {
     margin-bottom: 3rem;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .timeline-item:nth-child(even) {
@@ -617,6 +657,10 @@ body {
 
 .timeline-item:nth-child(odd) {
     padding-left: 50%;
+}
+
+.timeline-item.active {
+    animation: slideInUp 0.8s ease-out forwards;
 }
 
 .timeline-marker {
@@ -716,13 +760,18 @@ body {
     border-radius: 15px;
     text-align: center;
     transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
 }
 
 .cert-card:hover {
     background: rgba(99, 102, 241, 0.1);
     border-color: var(--primary);
     transform: translateY(-10px);
+}
+
+.cert-card.active {
+    animation: slideInUp 0.8s ease-out forwards;
 }
 
 .cert-card i {
@@ -761,7 +810,8 @@ body {
     border-radius: 15px;
     padding: 2rem;
     transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -772,6 +822,30 @@ body {
     border-color: var(--primary);
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+}
+
+.project-card.active {
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.project-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumbnail img {
+    transform: scale(1.1);
 }
 
 .project-header {
@@ -1395,7 +1469,11 @@ body {
     }
 
     .hero-visual {
-        display: none;
+        display: flex;
+        height: auto;
+        margin-top: 2rem;
+        justify-content: center;
+        order: -1; /* Menampilkan foto di atas teks pada mobile */
     }
 
     .about-content {
