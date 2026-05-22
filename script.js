@@ -1,16 +1,11 @@
 // Add js-enabled class to html element for CSS animations
 document.documentElement.classList.add('js-enabled');
 
-// Memastikan halaman kembali ke atas saat refresh agar animasi berjalan benar
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-
 // Navigation Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-if (hamburger && navMenu) {
+if (hamburger) {
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
@@ -29,15 +24,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const href = this.getAttribute('href');
         if (href !== '#') {
             e.preventDefault();
-            
-            // Cek apakah selector valid (menghindari error querySelector untuk ID angka)
-            let target;
-            try {
-                target = document.querySelector(href);
-            } catch (e) {
-                return; // Abaikan jika ID tidak valid seperti #0
-            }
-
+            const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
@@ -48,9 +35,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar & Active Link on Scroll
+// Navbar Background Change on Scroll
 const navbar = document.querySelector('.navbar');
-<<<<<<< HEAD
 
 // Cache sections and nav links for active link computation
 const sections = Array.from(document.querySelectorAll('section[id]'));
@@ -204,64 +190,70 @@ const createCursorFollower = () => {
 // createCursorFollower();
 
 // Parallax handled inside throttled scroll handler above
-=======
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
-const updateNavbarState = () => {
-    // Background Change
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-        navbar.style.backdropFilter = 'blur(20px)';
-    } else {
-        navbar.style.background = 'rgba(10, 14, 39, 0.8)';
-        navbar.style.backdropFilter = 'blur(10px)';
-    }
-
-    // Update Active Link
-    let current = '';
-    sections.forEach(section => {
-        if (window.pageYOffset >= section.offsetTop - 200) {
-            current = section.getAttribute('id');
+// Add scroll to top button
+const createScrollToTop = () => {
+    const button = document.createElement('button');
+    button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    button.style.position = 'fixed';
+    button.style.bottom = '30px';
+    button.style.right = '30px';
+    button.style.width = '50px';
+    button.style.height = '50px';
+    button.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
+    button.style.color = 'white';
+    button.style.border = 'none';
+    button.style.borderRadius = '50%';
+    button.style.cursor = 'pointer';
+    button.style.display = 'none';
+    button.style.zIndex = '999';
+    button.style.transition = 'all 0.3s ease';
+    button.style.boxShadow = '0 10px 25px rgba(99, 102, 241, 0.3)';
+    button.className = 'scroll-to-top';
+    
+    document.body.appendChild(button);
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            button.style.display = 'flex';
+            button.style.alignItems = 'center';
+            button.style.justifyContent = 'center';
+        } else {
+            button.style.display = 'none';
         }
     });
     
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    button.addEventListener('mouseover', () => {
+        button.style.transform = 'translateY(-5px)';
+        button.style.boxShadow = '0 15px 35px rgba(99, 102, 241, 0.5)';
+    });
+    
+    button.addEventListener('mouseout', () => {
+        button.style.transform = 'translateY(0)';
+        button.style.boxShadow = '0 10px 25px rgba(99, 102, 241, 0.3)';
     });
 };
 
-let isScrolling;
-window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-        window.requestAnimationFrame(() => {
-            updateNavbarState();
-            isScrolling = false;
-        });
-        isScrolling = true;
-    }
-});
->>>>>>> bce3e4d2ec06f12b8c0597ff6d2de6940fc70da6
+createScrollToTop();
 
-window.addEventListener('load', updateNavbarState);
-
-// Observe animated elements
-const observer = new IntersectionObserver((entries) => {
+// Lazy loading for images
+const imageObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target); // Berhenti mengamati jika sudah muncul
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            imageObserver.unobserve(img);
         }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-document.querySelectorAll('.project-card, .skill-category, .timeline-item, .cert-card, .reveal').forEach(el => {
-    observer.observe(el);
 });
-<<<<<<< HEAD
 
 document.querySelectorAll('img[data-src]').forEach(img => {
     imageObserver.observe(img);
@@ -283,5 +275,3 @@ const initAnimations = () => {
 window.addEventListener('load', initAnimations);
 
 console.log('Portfolio loaded successfully! 🚀');
-=======
->>>>>>> bce3e4d2ec06f12b8c0597ff6d2de6940fc70da6
