@@ -36,6 +36,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="cv.html">CV</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -66,7 +67,10 @@
                     <a href="#projects" class="btn btn-primary">
                         <i class="fas fa-arrow-down"></i> View My Work
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
+                    <a href="cv.html" class="btn btn-secondary">
+                        <i class="fas fa-file-alt"></i> View CV
+                    </a>
+                    <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-envelope"></i> Get In Touch
                     </a>
                 </div>
@@ -280,6 +284,49 @@
         </div>
     </section>
 
+    <!-- RESUME / CV SECTION -->
+    <section class="projects" id="resume">
+        <div class="container">
+            <h2 class="section-title">Resume & CV Highlights</h2>
+            <p class="section-subtitle">Ringkasan CV yang sudah dikirimkan, ditampilkan langsung di portfolio</p>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Profil Singkat</h3>
+                    <p>Fresh Graduate Sarjana Sistem Informasi dengan kompetensi dalam pengembangan aplikasi web dan mobile, implementasi sistem, serta pengelolaan database. Berpengalaman menggunakan Flutter, Laravel, PHP, JavaScript, MySQL, PostgreSQL, dan Python dalam pengembangan, analisis data, serta integrasi REST API.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Pendidikan & Sertifikasi</h3>
+                    <p><strong>Sarjana Sistem Informasi</strong> — Institut Digital Ekonomi LPKIA (Graduated 2025)<br><br>Sertifikasi: Penilaian & Pengujian Keamanan dan Operasi Keamanan, Dasar-dasar Keamanan Siber, Pemrograman Java, IT Essentials PC Hardware & Software.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Pengalaman Utama</h3>
+                    <p>IT Support & Junior Data Analyst di Program Studi Sistem Informasi LPKIA, Staf Pendukung di UPT Metrologi Legal Kota Bandung, dan Multimedia & IT Support di UPT Balai Dinas Industri Kota Bandung.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Keahlian</h3>
+                    <div class="project-tech">
+                        <span>Flutter</span>
+                        <span>Laravel</span>
+                        <span>PHP</span>
+                        <span>JavaScript</span>
+                        <span>Vue.js</span>
+                        <span>Nuxt.js</span>
+                        <span>MySQL</span>
+                        <span>PostgreSQL</span>
+                        <span>Python</span>
+                        <span>Git</span>
+                        <span>Figma</span>
+                        <span>UML</span>
+                    </div>
+                </article>
+            </div>
+            <div class="view-more">
+                <p>CV lengkap tersedia dalam halaman terpisah.</p>
+                <a href="cv.html" class="github-link"><i class="fas fa-file-alt"></i> Lihat CV Lengkap</a>
+            </div>
+        </div>
+    </section>
+
     <!-- PROJECTS SECTION -->
     <section class="projects" id="projects">
         <div class="container">
@@ -288,10 +335,6 @@
             <div class="projects-grid">
                 <!-- Project 1: RT-RW -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <!-- Contoh memanggil gambar lokal di folder images -->
-                        <img src="images/rt-rw-project.jpg" alt="RT-RW Management System" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
-                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-building"></i>
@@ -313,9 +356,6 @@
 
                 <!-- Project 2: Marketplace App -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/marketplace-preview.png" alt="Marketplace App" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
-                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-shopping-cart"></i>
@@ -337,9 +377,6 @@
 
                 <!-- Project 3: Pengajuan SPBU -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/rt-rw-project.jpg" alt="Pengajuan SPBU Dashboard Preview" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
-                    </div>
                     <div class="project-header">
                         <div class="project-icon">
                             <i class="fas fa-gas-pump"></i>
@@ -358,30 +395,7 @@
                         <span>MySQL</span>
                     </div>
                 </div>
-                
-                <!-- Project 4: Admin Dashboard -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400?text=Dashboard+Preview" alt="Admin Dashboard" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">
-                    </div>
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="project-link" title="View">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <h3>Admin Dashboard</h3>
-                    <p>Dashboard untuk monitoring dan analitik aplikasi.</p>
-                    <div class="project-tech">
-                        <span>Vue.js</span>
-                        <span>Chart.js</span>
-                        <span>Laravel</span>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
@@ -398,15 +412,13 @@
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="testimonial-text">
-                        "Ariq sangat profesional dalam mengembangkan sistem RT-RW kami. Hasilnya sangat rapi, mudah digunakan, dan dia sangat responsif terhadap masukan kami."
-                    </p>
+                    <p class="testimonial-text">“Ariq sangat profesional dalam mengembangkan sistem RT-RW kami. Hasilnya sangat rapi, mudah digunakan, dan dia sangat responsif terhadap masukan kami.”</p>
                     <div class="testimonial-author">
-                        <img src="https://via.placeholder.com/100" alt="Client 1">
                         <div class="author-info">
                             <h4>Bapak Ahmad</h4>
                             <p>Ketua RW 05 Bandung</p>
                         </div>
+                        <span class="testimonial-email">ahmad.rw05@email.com</span>
                     </div>
                 </div>
 
@@ -415,15 +427,13 @@
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="testimonial-text">
-                        "Kemampuannya dalam Laravel dan Vue.js benar-benar membantu mempercepat project marketplace kami. Sangat direkomendasikan untuk pengembangan web kompleks."
-                    </p>
+                    <p class="testimonial-text">“Kemampuannya dalam Laravel dan Vue.js benar-benar membantu mempercepat project marketplace kami. Sangat direkomendasikan untuk pengembangan web kompleks.”</p>
                     <div class="testimonial-author">
-                        <img src="https://via.placeholder.com/100" alt="Client 2">
                         <div class="author-info">
                             <h4>Sarah Wijaya</h4>
                             <p>Product Manager</p>
                         </div>
+                        <span class="testimonial-email">sarah.wijaya@example.com</span>
                     </div>
                 </div>
             </div>
@@ -459,6 +469,24 @@
                         </div>
                     </div>
                 </div>
+
+                <form id="contactForm" class="contact-form">
+                    <h3 style="color: var(--primary); margin-bottom: 0.25rem;">Leave a Comment</h3>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Tinggalkan pesan atau pertanyaan untuk saya.</p>
+                    <div class="form-group">
+                        <label for="name" style="color: var(--text-light); margin-bottom: 0.35rem;">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="color: var(--text-light); margin-bottom: 0.35rem;">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" style="color: var(--text-light); margin-bottom: 0.35rem;">Comment</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your comment here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
 
             <!-- Social Links -->
