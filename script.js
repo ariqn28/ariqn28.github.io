@@ -27,7 +27,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const target = document.querySelector(href);
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth',
+                    behavior: 'auto',
                     block: 'start'
                 });
             }
@@ -59,12 +59,6 @@ function onScroll() {
                 navbar.style.background = 'rgba(10, 14, 39, 0.8)';
                 navbar.style.backdropFilter = 'blur(10px)';
             }
-        }
-
-        // Parallax hero
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrollY * 0.5}px)`;
         }
 
         // Active nav link (compute based on viewport)

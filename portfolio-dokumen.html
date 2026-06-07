@@ -19,17 +19,24 @@
     .small { color:var(--muted); font-size:12px; }
     ul { margin: 6px 0 0 18px; padding:0; }
     .footer-note { font-size:12px; color:var(--muted); text-align:center; margin-top:20px; }
-    @media print { body { background:#fff; } .page { max-width:100%; padding:18px; } }
+    .download-bar { display:flex; justify-content:flex-end; gap:10px; margin-bottom:14px; }
+    .btn { border:1px solid #6366f1; background:#6366f1; color:#fff; border-radius:999px; padding:10px 14px; font-size:13px; font-weight:700; cursor:pointer; }
+    .btn.secondary { background:#fff; color:#4338ca; }
+    @media print { body { background:#fff; } .page { max-width:100%; padding:18px; } .download-bar { display:none !important; } }
   </style>
 </head>
 <body>
   <main class="page">
+    <div class="download-bar">
+      <button class="btn" type="button" onclick="window.print()">Download PDF</button>
+      <button class="btn secondary" type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
     <section class="header">
       <div>
         <p class="small">Portfolio Dokumen / File Version</p>
         <h1>Ariq Naufal Syachroni, S.Kom</h1>
         <p>Full Stack Developer • Web & Mobile Developer • Data Enthusiast</p>
-        <p>0857 2237 08820 | ariqnaufalsyachroni57@gmail.com | Bandung, Indonesia</p>
+        <p>085723708820 | ariqnaufalsyachroni57@gmail.com | Bandung, Indonesia</p>
       </div>
       <div style="text-align:right;">
         <span class="pill">Laravel</span>
