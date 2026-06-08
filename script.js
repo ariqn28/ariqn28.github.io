@@ -94,22 +94,40 @@ if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
         
-        const formData = new FormData(this);
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
+        const form = e.target;
+        const formData = new FormData(form);
         
-        // Create mailto link
-        const mailtoLink = `mailto:ariqnaufalsyachroni57@gmail.com?subject=Contact from ${name}&body=${encodeURIComponent(message)}%0D%0A%0D%0ASender Email: ${email}`;
+        const name = formData.get('contactName');
+        const email = formData.get('contactEmail');
+        const subject = formData.get('contactSubject');
+        const message = formData.get('contactMessage');
         
-        // Open mail client  
-        window.location.href = mailtoLink;
+        // Basic client-side validation
+        if (!name || !email || !subject || !message) {
+            alert('Please fill in all required fields.');
+            return;
+        }
         
-        // Reset form
-        this.reset();
+        // Optional: Show a loading indicator
+        // alert('Sending your message...'); 
         
-        // Show success message (optional)
-        alert('Thank you for your message! I will get back to you soon.');
+        fetch('inc/sendEmail.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text()) // PHP script returns plain text "OK" or error
+        .then(result => {
+            if (result.trim() === 'OK') {
+                alert('Thank you for your message! I will get back to you soon.');
+                form.reset(); // Clear the form fields
+            } else {
+                alert('Error sending message: ' + result);
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            alert('An unexpected error occurred. Please try again later.');
+        });
     });
 }
 
