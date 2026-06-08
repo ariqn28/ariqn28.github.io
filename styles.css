@@ -58,7 +58,7 @@ section {
     overflow-x: hidden;
     padding-top: 0;
     padding-bottom: 2.5rem;
-    flex: 1 0 auto; /* Memastikan konten utama mengambil sisa ruang agar footer terdorong ke bawah */
+    flex: 1 0 auto; /* Mendorong footer ke bawah */
 }
 
 section[id] {
@@ -732,7 +732,7 @@ img {
 
 /* ============ SKILLS SECTION ============ */
 .skills {
-    padding: 140px 0 100px; /* Menambah padding atas agar tidak terlalu nempel */
+    padding: 160px 0 100px; /* Memberikan ruang ekstra agar tidak nempel ke About Me */
     background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05));
 }
 
@@ -1435,7 +1435,7 @@ img {
 .footer {
     background: rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(99, 102, 241, 0.2);
-    padding: 1.5rem 0; /* Mengurangi padding agar footer lebih ringkas */
+    padding: 2rem 0;
     text-align: center;
 }
 
