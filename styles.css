@@ -258,10 +258,10 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start; /* Mengubah dari center ke start agar teks naik ke atas */
+    align-items: flex-start; /* Memastikan teks rata atas */
     position: relative;
     z-index: 1;
-    padding-top: 2rem; /* Jarak kecil agar tidak menabrak garis navbar */
+    padding-top: 0.5rem; /* Jarak minimal agar teks nempel ke area navbar */
 }
 
 .hero-content,
@@ -732,7 +732,7 @@ img {
 
 /* ============ SKILLS SECTION ============ */
 .skills {
-    padding: 160px 0 100px; /* Memberikan ruang ekstra agar tidak nempel ke About Me */
+    padding: 180px 0 100px; /* Jarak lebih lega agar Technical Skills tidak terlihat mepet */
     background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05));
 }
 
