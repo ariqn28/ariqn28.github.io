@@ -673,7 +673,7 @@ img {
 
 /* ============ EXPERIENCE SECTION ============ */
 .experience {
-    padding: 100px 0;
+    padding: 56px 0;
 }
 
 .experience-timeline {
@@ -995,14 +995,14 @@ img {
 
 /* ============ EXPERIENCE SECTION ============ */
 .experience {
-    padding: 100px 0;
+    padding: 56px 0;
     background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05));
 }
 
 .experience-timeline {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.75rem;
 }
 
 .experience-card {
@@ -1025,8 +1025,8 @@ img {
 
 .experience-header {
     display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
 }
 
 .experience-icon {
@@ -1064,7 +1064,7 @@ img {
 }
 
 .experience-details {
-    padding-top: 1.5rem;
+    padding-top: 0.75rem;
     border-top: 1px solid rgba(99, 102, 241, 0.2);
 }
 
@@ -1074,8 +1074,8 @@ img {
 }
 
 .experience-details li {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
+    margin-bottom: 0.45rem;
+    padding-left: 1.2rem;
     position: relative;
     color: var(--text-light);
     line-height: 1.6;
@@ -1092,21 +1092,21 @@ img {
 
 /* ============ EDUCATION SECTION ============ */
 .education {
-    padding: 100px 0;
+    padding: 56px 0;
     background: linear-gradient(180deg, rgba(99, 102, 241, 0.05), transparent);
 }
 
 .education-timeline {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.75rem;
 }
 
 .education-card {
     background: rgba(99, 102, 241, 0.05);
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1rem;
     transition: all 0.3s ease;
     animation: slideInUp 0.8s ease-out;
     display: flex;
