@@ -1479,6 +1479,24 @@ img {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
+    .container {
+        width: min(100% - 1rem, 1200px);
+        padding: 0 0.75rem;
+    }
+
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .navbar .container {
+        gap: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1488,12 +1506,14 @@ img {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: var(--darker);
+        background: rgba(10, 14, 39, 0.98);
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        padding: 2rem 0;
+        padding: 1rem 0 1.5rem;
         gap: 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-menu.active {
@@ -1505,13 +1525,27 @@ img {
         padding: 1rem;
     }
 
+    .hero {
+        padding: 96px 0 52px;
+    }
+
     .hero .container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .hero-title {
         font-size: 2rem;
+        line-height: 1.15;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-description {
+        font-size: 0.98rem;
+        line-height: 1.7;
     }
 
     .hero-visual {
@@ -1522,8 +1556,22 @@ img {
         grid-template-columns: 1fr;
     }
 
+    .about {
+        padding: 56px 0;
+    }
+
     .about-image {
         display: block;
+        margin-bottom: 1rem;
+    }
+
+    .about-highlights {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .highlight-item {
+        padding: 1rem;
     }
 
     .timeline-item:nth-child(even),
@@ -1534,15 +1582,44 @@ img {
 
     .contact-content {
         grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        gap: 1.25rem;
+    }
+
+    .cv-document,
+    .contact-info,
+    .contact-form,
+    .projects-grid,
+    .experience-timeline {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .hero-buttons {
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.85rem 1rem;
     }
 
     .hero-stats {
-        flex-wrap: wrap;
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .stat {
+        padding: 0.85rem;
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.18);
+        border-radius: 14px;
     }
 
     .skills-container {
@@ -1553,8 +1630,50 @@ img {
         grid-template-columns: 1fr;
     }
 
-    .about-highlights {
+    .contact {
+        padding: 72px 0;
+    }
+
+    .contact-content {
+        gap: 1.5rem;
+    }
+
+    .info-item {
+        gap: 0.9rem;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .info-item p,
+    .project-card p,
+    .experience-details li,
+    .project-tech span {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .info-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.1rem;
+    }
+
+    .contact-form,
+    .project-card,
+    .experience-card,
+    .testimonial-card {
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .experience-card {
@@ -1576,9 +1695,11 @@ img {
 
     .section-title {
         font-size: 1.8rem;
+        line-height: 1.2;
     }
 
     .section-subtitle {
         margin-bottom: 2rem;
+        font-size: 0.98rem;
     }
 }
