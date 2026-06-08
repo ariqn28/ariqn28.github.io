@@ -20,39 +20,34 @@
     doc.setAttribute('data-useragent', navigator.userAgent);
 
 
-    /* Preloader
-     * -------------------------------------------------- */
+    /*
+     * NOTE: ssPreloader is commented out in ssInit() because it's likely handled by another script or not needed.
+     * If you intend to use a preloader, uncomment it in ssInit() and ensure #loader and #preloader elements exist in HTML.
+     */
     var ssPreloader = function() {
-
         $("html").addClass('ss-preload');
 
         $WIN.on('load', function() {
-
             // force page scroll position to top at page refresh
             // $('html, body').animate({ scrollTop: 0 }, 'normal');
 
-            // will first fade out the loading animation 
             $("#loader").fadeOut("slow", function() {
-                // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
             }); 
             
-            // for hero content animations 
             $("html").removeClass('ss-preload');
             $("html").addClass('ss-loaded');
-        
         });
     };
 
 
-    /* pretty print
-     * -------------------------------------------------- */
-    var ssPrettyPrint = function() {
-        $('pre').addClass('prettyprint');
-        $( document ).ready(function() {
-            prettyPrint();
-        });
-    };
+    /*
+     * NOTE: ssPrettyPrint is commented out in ssInit(). Remove if not used.
+     */
+    // var ssPrettyPrint = function() {
+    //     $('pre').addClass('prettyprint');
+    //     $( document ).ready(function() { prettyPrint(); });
+    // };
 
 
     /* Move header
@@ -68,31 +63,13 @@
 
             var loc = $WIN.scrollTop();
 
-            if (loc > triggerHeight) {
-                hdr.addClass('sticky');
+            if (loc > 50) {
+                hdr.addClass('scrolled');
             } else {
-                hdr.removeClass('sticky');
-            }
-
-            if (loc > triggerHeight + 20) {
-                hdr.addClass('offset');
-            } else {
-                hdr.removeClass('offset');
-            }
-
-            if (loc > triggerHeight + 150) {
-                hdr.addClass('scrolling');
-            } else {
-                hdr.removeClass('scrolling');
+                hdr.removeClass('scrolled');
             }
 
         });
-
-        // $WIN.on('resize', function() {
-        //     if ($WIN.width() <= 768) {
-        //             hdr.removeClass('sticky offset scrolling');
-        //     }
-        // });
 
     };
 
@@ -101,14 +78,14 @@
      * ---------------------------------------------------- */ 
     var ssMobileMenu = function() {
 
-        var toggleButton = $('.header-menu-toggle'),
-            nav = $('.header-nav-wrap');
+        var toggleButton = $('.hamburger'),
+            nav = $('.nav-menu');
 
         toggleButton.on('click', function(event){
             event.preventDefault();
 
-            toggleButton.toggleClass('is-clicked');
-            nav.slideToggle();
+            toggleButton.toggleClass('active');
+            nav.toggleClass('active');
         });
 
         if (toggleButton.is(':visible')) nav.addClass('mobile');
@@ -121,32 +98,27 @@
         nav.find('a').on("click", function() {
 
             if (nav.hasClass('mobile')) {
-                toggleButton.toggleClass('is-clicked');
-                nav.slideToggle(); 
+                toggleButton.removeClass('active');
+                nav.removeClass('active');
             }
         });
 
     };
 
-
-    /* Masonry
-     * ---------------------------------------------------- */ 
-    var ssMasonryFolio = function () {
-
-        var containerBricks = $('.masonry');
-
-        containerBricks.imagesLoaded(function () {
-            containerBricks.masonry({
-                itemSelector: '.masonry__brick',
-                resize: true
-            });
-        });
-    };
+    /*
+     * NOTE: ssMasonryFolio is commented out in ssInit() as no .masonry elements are found. Remove if not used.
+     */
+    // var ssMasonryFolio = function () {
+    //     var containerBricks = $('.masonry');
+    //     containerBricks.imagesLoaded(function () {
+    //         containerBricks.masonry({ itemSelector: '.masonry__brick', resize: true });
+    //     });
+    // };
 
 
-    /* photoswipe
-     * ----------------------------------------------------- */
-    var ssPhotoswipe = function() {
+    /*
+     * NOTE: ssPhotoswipe is commented out in ssInit() as no .item-folio elements are found. Remove if not used.
+     */
         var items = [],
             $pswp = $('.pswp')[0],
             $folioItems = $('.item-folio');
@@ -194,11 +166,11 @@
                 });
 
             });
+    // var ssPhotoswipe = function() { ... }; // Moved content inside ssInit for clarity if needed.
 
-    };
 
-
-    /* slick slider
+    /*
+     * NOTE: ssSlickSlider is commented out in ssInit() as no .testimonials__slider elements are found. Remove if not used.
      * ------------------------------------------------------ */
     var ssSlickSlider = function() {
         
@@ -223,10 +195,10 @@
             ]
         });
 
-    };
+    // }; // ssSlickSlider is commented out in ssInit()
 
 
-    /* Highlight the current section in the navigation bar
+    /*
      * ------------------------------------------------------ */
     var ssWaypoints = function() {
 
@@ -252,10 +224,10 @@
 
             offset: '25%'
 
-        });
-        
+        });        
     };
 
+    /* NOTE: ssWaypoints is commented out in ssInit() as it conflicts with IntersectionObserver. Remove if not used. */
 
    /* Stat Counter
     * ------------------------------------------------------ */
@@ -292,46 +264,19 @@
             offset: "90%"
 
         });
-    };
+    // }; // ssStatCount is commented out in ssInit()
 
 
-   /* Smooth Scrolling
-    * ------------------------------------------------------ */
-    var ssSmoothScroll = function() {
-
-        $('.smoothscroll').on('click', function (e) {
-            var target = this.hash,
-            $target    = $(target);
-        
-            e.preventDefault();
-            e.stopPropagation();
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, cfg.scrollDuration, 'swing', function () {
-                window.location.hash = target;
-            });
-
-        });
-    };
+    /* NOTE: ssSmoothScroll is commented out in ssInit() as native smooth scroll is preferred. Remove if not used. */
+    // var ssSmoothScroll = function() { ... };
 
 
-    /* Placeholder Plugin Settings
-     * ------------------------------------------------------ */
-    var ssPlaceholder = function() {
-        $('input, textarea, select').placeholder();  
-    };
+    /* NOTE: ssPlaceholder is commented out in ssInit() as modern browsers handle placeholders natively. Remove if not used. */
+    // var ssPlaceholder = function() { $('input, textarea, select').placeholder(); };
 
 
-    /* Alert Boxes
-     * ------------------------------------------------------ */
-    var ssAlertBoxes = function() {
-
-        $('.alert-box').on('click', '.alert-box__close', function() {
-            $(this).parent().fadeOut(500);
-        }); 
-
-    };
+    /* NOTE: ssAlertBoxes is commented out in ssInit() as no .alert-box elements are found. Remove if not used. */
+    // var ssAlertBoxes = function() { ... };
 
 
     /* Contact Form
@@ -387,47 +332,21 @@
         });
     };
 
+    /* NOTE: ssReveal is commented out in ssInit() as it's replaced by IntersectionObserver in script.js. Remove if not used. */
+    // var ssReveal = function() { ... };
 
-   /* Back to Top
-    * ------------------------------------------------------ */
-    var ssBackToTop = function() {
 
-        var pxShow  = 500,   // height on which the button will show
-        fadeInTime  = 400,   // how slow/fast you want the button to show
-        fadeOutTime = 400,   // how slow/fast you want the button to hide
-        scrollSpeed = 300,   // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
-        goTopButton = $(".go-top")
-
-        // Show or hide the sticky footer button
-        $(window).on('scroll', function() {
-            if ($(window).scrollTop() >= pxShow) {
-                goTopButton.fadeIn(fadeInTime);
-            } else {
-                goTopButton.fadeOut(fadeOutTime);
-            }
-        });
-    };
+    /* NOTE: ssBackToTop is commented out in ssInit() as it's replaced by scroll-to-top in script.js. Remove if not used. */
+    // var ssBackToTop = function() { ... };
 
 
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
-
-        // ssPreloader(); 
-        ssPrettyPrint();
+        ssPreloader();
         ssMoveHeader();
         ssMobileMenu();
-        ssMasonryFolio();
-        ssPhotoswipe();
-        ssSlickSlider();
-        ssWaypoints();
-        ssStatCount();
-        ssSmoothScroll();
-        ssPlaceholder();
-        ssAlertBoxes();
         ssContactForm();
-        ssBackToTop();
-
     })();
 
 

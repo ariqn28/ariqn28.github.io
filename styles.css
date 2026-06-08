@@ -47,7 +47,10 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     letter-spacing: 0.2px;
+    padding-top: 88px; /* Menambahkan padding untuk mengimbangi tinggi navbar fixed */
 }
 
 main,
@@ -55,6 +58,7 @@ section {
     overflow-x: hidden;
     padding-top: 0;
     padding-bottom: 2.5rem;
+    flex: 1 0 auto; /* Memastikan konten utama mengambil sisa ruang agar footer terdorong ke bawah */
 }
 
 section[id] {
@@ -87,14 +91,34 @@ img {
 }
 
 /* ============ REVEAL ANIMATION ============ */
-.reveal {
+.js-enabled .reveal,
+.js-enabled .hero-content,
+.js-enabled .hero-visual,
+.skill-category,
+.project-card,
+.experience-card,
+.education-card,
+.testimonial-card,
+.cert-card,
+.contact-info,
+.contact-form,
+.highlight-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     will-change: transform, opacity;
 }
 
-.reveal.active {
+.reveal.active,
+.skill-category.active,
+.project-card.active,
+.experience-card.active,
+.education-card.active,
+.testimonial-card.active,
+.cert-card.active,
+.contact-info.active,
+.contact-form.active,
+.highlight-item.active {
     opacity: 1;
     transform: translateY(0);
 }
@@ -105,11 +129,17 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
-    background: rgba(10, 14, 39, 0.8);
+    z-index: 999;
+    background: transparent;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(99, 102, 241, 0.1);
     padding: 1rem 0;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(20px);
 }
 
 .navbar .container {
@@ -150,6 +180,10 @@ img {
     color: var(--primary);
 }
 
+.nav-menu a.active {
+    color: var(--primary);
+}
+
 .nav-menu a::after {
     content: '';
     position: absolute;
@@ -161,7 +195,7 @@ img {
     transition: width 0.3s ease;
 }
 
-.nav-menu a:hover::after {
+.nav-menu a:hover::after, .nav-menu a.active::after {
     width: 100%;
 }
 
@@ -180,14 +214,28 @@ img {
     transition: all 0.3s ease;
 }
 
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+
 /* ============ HERO SECTION ============ */
 .hero {
     min-height: 100vh;
     height: auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Mengubah agar konten Hero menempel ke atas */
     justify-content: center;
-    padding: 110px 0 70px;
+    padding: 0 0 70px; /* Menghapus padding-top agar konten menempel ke navbar */
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid rgba(99, 102, 241, 0.08);
@@ -203,16 +251,17 @@ img {
     background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     animation: float 20s ease-in-out infinite;
-    will-change: transform;
+    will-change: transform, opacity; /* Diperbarui agar sesuai dengan animasi */
 }
 
 .hero .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start; /* Mengubah dari center ke start agar teks naik ke atas */
     position: relative;
     z-index: 1;
+    padding-top: 2rem; /* Jarak kecil agar tidak menabrak garis navbar */
 }
 
 .hero-content,
@@ -222,7 +271,7 @@ img {
 }
 
 .hero-content {
-    animation: slideInLeft 1s ease-out;
+    /* animation: slideInLeft 1s ease-out; */ /* Removed, handled by .reveal */
 }
 
 .hero-title {
@@ -258,6 +307,26 @@ img {
     gap: 1rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+}
+
+.hero-buttons-secondary {
+    margin-top: -1.5rem; /* Merapatkan baris kedua dengan baris pertama */
+    margin-bottom: 3rem;
+}
+
+.btn-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .btn {
@@ -330,6 +399,20 @@ img {
     justify-content: center;
 }
 
+/* Menambahkan efek gradasi menyala di belakang foto profil */
+.hero-visual::before {
+    content: '';
+    position: absolute;
+    width: 350px; /* Sedikit lebih lebar dari foto */
+    height: 350px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--tertiary));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(50px); /* Blur lebih kuat agar efek glow terasa */
+    opacity: 0.8; /* Lebih terang */
+    z-index: 1;
+    animation: blobAnimation 10s infinite alternate;
+}
+
 .hero-img-wrapper {
     width: 320px;
     height: 320px;
@@ -340,7 +423,7 @@ img {
     border: 8px solid rgba(99, 102, 241, 0.1);
     animation: blobAnimation 10s infinite alternate;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    will-change: border-radius;
+    will-change: transform, opacity; /* Diperbarui agar sesuai dengan animasi */
 }
 
 .hero-img-main {
@@ -355,7 +438,7 @@ img {
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
     animation: blobAnimation 15s infinite;
-    will-change: border-radius;
+    will-change: transform, opacity; /* Diperbarui agar sesuai dengan animasi */
 }
 
 .blob-1 {
@@ -441,7 +524,6 @@ img {
 }
 
 .about-text {
-    animation: slideInLeft 1s ease-out;
 }
 
 .about-intro,
@@ -505,7 +587,6 @@ img {
 .about-image {
     position: relative;
     height: 400px;
-    animation: slideInRight 1s ease-out;
 }
 
 .image-container {
@@ -626,10 +707,11 @@ img {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 .image-container img {
+    /* Mengatur object-fit agar gambar pas dan fokus pada bagian atas */
+    object-fit: cover;
+    object-position: center top; /* Fokuskan pada bagian atas gambar */
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 10%;
 }
 
 /* Perbaikan: Memastikan foto muncul di tampilan HP */
@@ -650,7 +732,7 @@ img {
 
 /* ============ SKILLS SECTION ============ */
 .skills {
-    padding: 100px 0;
+    padding: 140px 0 100px; /* Menambah padding atas agar tidak terlalu nempel */
     background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05));
 }
 
@@ -665,9 +747,6 @@ img {
     border: 1px solid rgba(99, 102, 241, 0.2);
     padding: 1.75rem;
     border-radius: 18px;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 .skill-category:hover {
@@ -675,10 +754,6 @@ img {
     border-color: var(--primary);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-}
-
-.skill-category.active {
-    animation: slideInUp 0.8s ease-out forwards;
 }
 
 .skill-category h3 {
@@ -710,118 +785,15 @@ img {
     transform: scale(1.1);
 }
 
-/* ============ EXPERIENCE SECTION ============ */
-.experience {
-    padding: 56px 0 20px;
-}
-
-.experience-timeline {
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.timeline-item {
-    margin-bottom: 3rem;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.timeline-item:nth-child(even) {
-    padding-right: 50%;
-}
-
-.timeline-item:nth-child(odd) {
-    padding-left: 50%;
-}
-
-.timeline-item.active {
-    animation: slideInUp 0.8s ease-out forwards;
-}
-
-.timeline-marker {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 15px;
-    background: var(--primary);
-    border-radius: 50%;
-    border: 3px solid var(--darker);
-    top: 0;
-}
-
-.timeline-content {
-    background: rgba(99, 102, 241, 0.05);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    padding: 2rem;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.timeline-content:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: var(--primary);
-    transform: scale(1.02);
-}
-
-.experience-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 0.5rem;
-}
-
-.experience-header h3 {
-    font-size: 1.3rem;
-    color: var(--primary);
-}
-
-.experience-period {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-.experience-company {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-}
-
-.experience-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.experience-list li {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-.experience-list li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-}
-
 .certifications {
     margin-top: 4rem;
 }
-
 .certifications h3 {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
     color: var(--primary);
 }
-
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -884,9 +856,6 @@ img {
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 18px;
     padding: 1.75rem;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -897,30 +866,6 @@ img {
     border-color: var(--primary);
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
-}
-
-.project-card.active {
-    animation: slideInUp 0.8s ease-out forwards;
-}
-
-.project-thumbnail {
-    width: 100%;
-    height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(99, 102, 241, 0.1);
-}
-
-.project-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-thumbnail img {
-    transform: scale(1.1);
 }
 
 .project-header {
@@ -1084,15 +1029,21 @@ img {
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 18px;
     padding: 1.75rem;
-    transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(30px); /* Initial state handled by .reveal */
+    transition: all 0.8s ease-out; /* Ensure transition is defined */
     display: flex;
     flex-direction: column;
 }
 
+/* Menghapus animasi spesifik untuk konsistensi dengan .reveal.active */
+/* .experience-card.active,
+   .education-card.active,
+   .testimonial-card.active {
+       animation: slideInUp 0.8s ease-out forwards;
+   } */
+
 .experience-card:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: var(--primary);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
 }
@@ -1181,9 +1132,9 @@ img {
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 15px;
     padding: 1rem;
-    transition: all 0.3s ease;
-    animation: slideInUp 0.8s ease-out;
-    display: flex;
+    display: flex; 
+    opacity: 0;
+    transform: translateY(30px);
     gap: 1.5rem;
     align-items: flex-start;
 }
@@ -1246,13 +1197,14 @@ img {
     border: 1px solid rgba(99, 102, 241, 0.2);
     padding: 2rem;
     border-radius: 18px;
+    opacity: 0; /* Initial hidden state */
+    transform: translateY(30px); 
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.8s ease-out, transform 0.3s ease, background 0.3s ease;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-
 .testimonial-card:hover {
     background: rgba(99, 102, 241, 0.1);
     border-color: var(--primary);
@@ -1317,12 +1269,18 @@ img {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    opacity: 0; /* Initial hidden state */
+    transform: translateY(30px); /* Initial hidden state */
+    transition: all 0.8s ease-out; /* Ensure transition is defined */
 }
 
 .info-item {
     display: flex;
     gap: 1.5rem;
-    animation: slideInLeft 1s ease-out;
+}
+
+.contact-info.active {
+    /* Hapus baris ini jika masih ada: animation: slideInLeft 1s ease-out forwards; */
 }
 
 .info-icon {
@@ -1350,13 +1308,17 @@ img {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    animation: slideInRight 1s ease-out;
+    gap: 1.5rem; /* Initial state handled by .reveal */
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+}
+
+.contact-label-group label {
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
 }
 
 .form-group input,
@@ -1473,7 +1435,7 @@ img {
 .footer {
     background: rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(99, 102, 241, 0.2);
-    padding: 2rem 0;
+    padding: 1.5rem 0; /* Mengurangi padding agar footer lebih ringkas */
     text-align: center;
 }
 
@@ -1537,20 +1499,23 @@ img {
 }
 
 @keyframes blobAnimation {
-    0%, 100% {
-        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    0%, 100% { /* Start and end state */
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
     }
-    25% {
-        border-radius: 70% 30% 46% 54% / 30% 30% 70% 70%;
+    25% { /* Intermediate state 1 */
+        transform: translate(10px, -15px) scale(1.05);
+        opacity: 0.9;
     }
-    50% {
-        border-radius: 100% 60% 52% 37% / 72% 36% 64% 28%;
+    50% { /* Intermediate state 2 */
+        transform: translate(-10px, 20px) scale(0.95);
+        opacity: 0.7;
     }
-    75% {
-        border-radius: 90% 25% 52% 49% / 46% 60% 43% 40%;
+    75% { /* Intermediate state 3 */
+        transform: translate(15px, -5px) scale(1.02);
+        opacity: 0.85;
     }
 }
-
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
     .container {
@@ -1600,7 +1565,7 @@ img {
     }
 
     .hero {
-        padding: 96px 0 52px;
+        padding: 20px 0 52px; /* Mengurangi padding mobile agar teks tetap nempel ke navbar */
     }
 
     .hero .container {
@@ -1642,22 +1607,6 @@ img {
         display: block;
         margin-bottom: 1rem;
     }
-
-    .about-highlights {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-    }
-
-    .highlight-item {
-        padding: 1rem;
-    }
-
-    .timeline-item:nth-child(even),
-    .timeline-item:nth-child(odd) {
-        padding: 0;
-        margin-left: 30px;
-    }
-
     .contact-content {
         grid-template-columns: 1fr;
         width: 100%;
