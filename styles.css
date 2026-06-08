@@ -673,12 +673,12 @@ img {
 
 /* ============ EXPERIENCE SECTION ============ */
 .experience {
-    padding: 56px 0;
+    padding: 56px 0 20px;
 }
 
 .experience-timeline {
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .timeline-item {
@@ -995,7 +995,7 @@ img {
 
 /* ============ EXPERIENCE SECTION ============ */
 .experience {
-    padding: 56px 0;
+    padding: 40px 0;
     background: linear-gradient(180deg, transparent, rgba(99, 102, 241, 0.05));
 }
 
@@ -1092,7 +1092,7 @@ img {
 
 /* ============ EDUCATION SECTION ============ */
 .education {
-    padding: 56px 0;
+    padding: 40px 0;
     background: linear-gradient(180deg, rgba(99, 102, 241, 0.05), transparent);
 }
 
