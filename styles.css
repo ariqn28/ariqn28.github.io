@@ -22,7 +22,15 @@
 html {
     scroll-behavior: auto;
     scroll-padding-top: 88px;
+    width: 100%;
+    overflow-x: hidden;
 }
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     html {
