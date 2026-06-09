@@ -1546,6 +1546,13 @@ img {
         padding: 0 0.75rem;
     }
 
+    /* Fix utama HP: cegah layout “zoom/menjorok” yang membuat teks terlihat hanya sebagian */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+
     /* Amankan layout mobile: jangan ada konten yang "menjorok"/overflow */
     .about-content,
     .about-text,
@@ -1771,6 +1778,20 @@ img {
         font-size: 1rem;
         line-height: 1.65;
     }
+
+    /* Mobile: rapikan teks panjang supaya tidak “keluar layar/terpotong” */
+    body,
+    .container,
+    .cv-document,
+    .project-card,
+    .experience-card,
+    .testimonial-card,
+    .about-text,
+    .about-detail {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
 
     /* Biar text & layout About/CV rapih di layar kecil */
     .about-text,
