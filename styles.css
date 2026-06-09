@@ -1538,6 +1538,25 @@ img {
         padding: 0 0.75rem;
     }
 
+    /* Amankan layout mobile: jangan ada konten yang "menjorok"/overflow */
+    .about-content,
+    .about-text,
+    .about-image,
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* CV halaman: pastikan kartu tidak meluber/menjorok */
+    #cv,
+    #cv .container,
+    #cv-document,
+    .cv-document {
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+
+
     .navbar {
         padding: 0.75rem 0;
     }
@@ -1736,9 +1755,25 @@ img {
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         line-height: 1.2;
     }
+
+    .about-intro {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    /* Biar text & layout About/CV rapih di layar kecil */
+    .about-text,
+    .about-image,
+    .about-content,
+    #cv-document,
+    #cv .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
 
     .section-subtitle {
         margin-bottom: 2rem;
