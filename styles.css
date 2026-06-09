@@ -479,6 +479,21 @@ img {
     left: 50px;
 }
 
+/* Mobile: jangan sampai floating-card menimpa konten lain */
+@media (max-width: 768px) {
+    .floating-card {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        max-width: 100%;
+        padding: 1rem 1.1rem;
+    }
+}
+
 .floating-card i {
     font-size: 2rem;
     color: var(--primary);
