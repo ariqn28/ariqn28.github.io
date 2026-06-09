@@ -1769,11 +1769,21 @@ img {
     .about-image,
     .about-content,
     #cv-document,
-    #cv .container {
+    #cv .container,
+    .cv-document {
         padding-left: 0;
         padding-right: 0;
+        max-width: 100% !important;
+        overflow-x: hidden;
     }
 
+    /* Pastikan tidak ada elemen absolute/transform bikin overflow horizontal */
+    .hero-visual,
+    .hero-img-wrapper,
+    .hero-visual::before,
+    .blob {
+        max-width: 100% !important;
+    }
 
     .section-subtitle {
         margin-bottom: 2rem;
