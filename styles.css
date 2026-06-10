@@ -1547,9 +1547,8 @@ img {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
     .container {
-        padding: 0 20px; /* Standar padding yang lebih aman */
+        padding: 0 24px; /* Memberikan ruang napas di kiri dan kanan */
         width: 100%;
-        overflow: hidden; /* Mencegah elemen dalam container meluber */
     }
 
     body {
@@ -1826,25 +1825,29 @@ img {
         word-break: break-word;
     }
 
-
-    /* Pastikan About Me dan CV tidak menempel ke pinggir dan terlihat seimbang */
+    /* Perbaikan Simetri: Hapus paksaan padding/width agar mengikuti alur normal dalam .container */
+    /* Ini akan membuat teks mengikuti padding 20px dari .container di mobile */
     .about-text,
     .about-content,
     #cv-document,
     .cv-document {
-        padding: 10px 0; /* Memberikan sedikit ruang vertikal */
-        margin: 0 auto;
-        width: 100%;
+        padding: 15px 0 !important;
+        margin: 0 !important;
+        width: auto !important;
         max-width: 100%;
-        text-align: left; /* Atur ke center jika ingin teks rata tengah di HP */
+        text-align: left;
+        overflow: visible;
+        display: block;
+        box-sizing: border-box;
     }
 
     /* Pastikan tidak ada elemen absolute/transform bikin overflow horizontal */
     .hero-visual,
     .hero-img-wrapper,
     .hero-visual::before,
-    .blob {
-        max-width: 100% !important;
+    .blob,
+    .hero::before {
+        max-width: 100vw !important;
     }
 
     .section-subtitle {
