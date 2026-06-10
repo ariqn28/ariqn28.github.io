@@ -28,7 +28,9 @@ html {
 
 body {
     width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
+    position: relative;
 }
 
 
@@ -58,7 +60,7 @@ body {
     display: flex;
     flex-direction: column;
     letter-spacing: 0.2px;
-    padding-top: 88px; /* Menambahkan padding untuk mengimbangi tinggi navbar fixed */
+    padding-top: 88px;
 }
 
 main,
@@ -92,7 +94,6 @@ img {
 }
 
 .container {
-    width: min(100% - 2rem, 1200px);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -143,6 +144,10 @@ img {
     border-bottom: 1px solid rgba(99, 102, 241, 0.1);
     padding: 1rem 0;
     transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar .container {
+    overflow: visible; /* Pastikan menu hamburger tidak terpotong */
 }
 
 .navbar.scrolled {
@@ -252,10 +257,10 @@ img {
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
+    top: -100px;
+    right: -20px;
+    width: min(400px, 90vw);
+    height: min(400px, 90vw);
     background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     animation: float 20s ease-in-out infinite;
@@ -869,7 +874,7 @@ img {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
 }
@@ -1211,7 +1216,7 @@ img {
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -1542,8 +1547,13 @@ img {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
     .container {
-        width: min(100% - 1rem, 1200px);
-        padding: 0 0.75rem;
+        padding: 0 20px; /* Standar padding yang lebih aman */
+        width: 100%;
+        overflow: hidden; /* Mencegah elemen dalam container meluber */
+    }
+
+    body {
+        padding-top: 70px; /* Menyesuaikan tinggi navbar mobile yang lebih pendek */
     }
 
     /* Fix utama HP: cegah layout “zoom/menjorok” yang membuat teks terlihat hanya sebagian */
@@ -1581,7 +1591,11 @@ img {
     }
 
     .logo {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        max-width: 210px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         line-height: 1.2;
     }
 
@@ -1644,6 +1658,21 @@ img {
         order: -1; /* Menampilkan foto di atas teks pada mobile */
     }
 
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-img-wrapper {
+        width: min(280px, 80vw);
+        height: min(280px, 80vw);
+        margin: 0 auto;
+    }
+
+    .hero-visual::before {
+        width: min(300px, 90vw);
+        height: min(300px, 90vw);
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -1654,6 +1683,7 @@ img {
 
     .about-image {
         display: block;
+        height: auto;
         margin-bottom: 1rem;
     }
     .contact-content {
@@ -1677,6 +1707,10 @@ img {
     .hero-buttons {
         flex-direction: column;
         gap: 0.75rem;
+    }
+
+    .hero-buttons-secondary {
+        margin-top: 0;
     }
 
     .hero-buttons .btn {
@@ -1793,17 +1827,16 @@ img {
     }
 
 
-    /* Biar text & layout About/CV rapih di layar kecil */
+    /* Pastikan About Me dan CV tidak menempel ke pinggir dan terlihat seimbang */
     .about-text,
-    .about-image,
     .about-content,
     #cv-document,
-    #cv .container,
     .cv-document {
-        padding-left: 0;
-        padding-right: 0;
-        max-width: 100% !important;
-        overflow-x: hidden;
+        padding: 10px 0; /* Memberikan sedikit ruang vertikal */
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        text-align: left; /* Atur ke center jika ingin teks rata tengah di HP */
     }
 
     /* Pastikan tidak ada elemen absolute/transform bikin overflow horizontal */
