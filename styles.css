@@ -24,6 +24,7 @@ html {
     scroll-padding-top: 88px;
     width: 100%;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -1555,13 +1556,6 @@ img {
         padding-top: 70px; /* Menyesuaikan tinggi navbar mobile yang lebih pendek */
     }
 
-    /* Fix utama HP: cegah layout “zoom/menjorok” yang membuat teks terlihat hanya sebagian */
-    html {
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-    }
-
-
     /* Amankan layout mobile: jangan ada konten yang "menjorok"/overflow */
     .about-content,
     .about-text,
@@ -1829,14 +1823,13 @@ img {
     /* Ini akan membuat teks mengikuti padding 20px dari .container di mobile */
     .about-text,
     .about-content,
-    #cv-document,
-    .cv-document {
+    .cv-document,
+    .about-intro {
         padding: 15px 0 !important;
         margin: 0 !important;
-        width: auto !important;
         max-width: 100%;
         text-align: left;
-        overflow: visible;
+        overflow: hidden;
         display: block;
         box-sizing: border-box;
     }
