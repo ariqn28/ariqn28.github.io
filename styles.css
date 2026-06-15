@@ -1825,7 +1825,7 @@ img {
     .about-content,
     .cv-document,
     .about-intro {
-        padding: 15px 0 !important;
+        padding: 15px 5px !important; /* Memberi sedikit ruang agar tidak terpotong di pinggir */
         margin: 0 !important;
         max-width: 100%;
         text-align: left;
@@ -1840,7 +1840,7 @@ img {
     .hero-visual::before,
     .blob,
     .hero::before {
-        max-width: 100vw !important;
+        max-width: 100% !important; /* Gunakan 100% agar tidak meluber melebihi container */
     }
 
     .section-subtitle {
