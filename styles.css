@@ -22,7 +22,18 @@
 html {
     scroll-behavior: auto;
     scroll-padding-top: 88px;
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
 }
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -50,7 +61,7 @@ body {
     display: flex;
     flex-direction: column;
     letter-spacing: 0.2px;
-    padding-top: 88px; /* Menambahkan padding untuk mengimbangi tinggi navbar fixed */
+    padding-top: 88px;
 }
 
 main,
@@ -84,7 +95,6 @@ img {
 }
 
 .container {
-    width: min(100% - 2rem, 1200px);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -135,6 +145,10 @@ img {
     border-bottom: 1px solid rgba(99, 102, 241, 0.1);
     padding: 1rem 0;
     transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar .container {
+    overflow: visible; /* Pastikan menu hamburger tidak terpotong */
 }
 
 .navbar.scrolled {
@@ -244,10 +258,10 @@ img {
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
+    top: -100px;
+    right: -20px;
+    width: min(400px, 90vw);
+    height: min(400px, 90vw);
     background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
     border-radius: 50%;
     animation: float 20s ease-in-out infinite;
@@ -477,6 +491,21 @@ img {
     animation: none;
     bottom: 50px;
     left: 50px;
+}
+
+/* Mobile: jangan sampai floating-card menimpa konten lain */
+@media (max-width: 768px) {
+    .floating-card {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        max-width: 100%;
+        padding: 1rem 1.1rem;
+    }
 }
 
 .floating-card i {
@@ -846,7 +875,7 @@ img {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
 }
@@ -1188,7 +1217,7 @@ img {
 
 .testimonials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -1519,9 +1548,32 @@ img {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 768px) {
     .container {
-        width: min(100% - 1rem, 1200px);
-        padding: 0 0.75rem;
+        padding: 0 24px; /* Memberikan ruang napas di kiri dan kanan */
+        width: 100%;
     }
+
+    body {
+        padding-top: 70px; /* Menyesuaikan tinggi navbar mobile yang lebih pendek */
+    }
+
+    /* Amankan layout mobile: jangan ada konten yang "menjorok"/overflow */
+    .about-content,
+    .about-text,
+    .about-image,
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* CV halaman: pastikan kartu tidak meluber/menjorok */
+    #cv,
+    #cv .container,
+    #cv-document,
+    .cv-document {
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+
 
     .navbar {
         padding: 0.75rem 0;
@@ -1532,7 +1584,11 @@ img {
     }
 
     .logo {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        max-width: 210px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         line-height: 1.2;
     }
 
@@ -1595,6 +1651,21 @@ img {
         order: -1; /* Menampilkan foto di atas teks pada mobile */
     }
 
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-img-wrapper {
+        width: min(280px, 80vw);
+        height: min(280px, 80vw);
+        margin: 0 auto;
+    }
+
+    .hero-visual::before {
+        width: min(300px, 90vw);
+        height: min(300px, 90vw);
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
@@ -1605,6 +1676,7 @@ img {
 
     .about-image {
         display: block;
+        height: auto;
         margin-bottom: 1rem;
     }
     .contact-content {
@@ -1628,6 +1700,10 @@ img {
     .hero-buttons {
         flex-direction: column;
         gap: 0.75rem;
+    }
+
+    .hero-buttons-secondary {
+        margin-top: 0;
     }
 
     .hero-buttons .btn {
@@ -1721,8 +1797,50 @@ img {
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         line-height: 1.2;
+    }
+
+    .about-intro {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    /* Mobile: rapikan teks panjang supaya tidak “keluar layar/terpotong” */
+    body,
+    .container,
+    .cv-document,
+    .project-card,
+    .experience-card,
+    .testimonial-card,
+    .about-text,
+    .about-detail {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* Perbaikan Simetri: Hapus paksaan padding/width agar mengikuti alur normal dalam .container */
+    /* Ini akan membuat teks mengikuti padding 20px dari .container di mobile */
+    .about-text,
+    .about-content,
+    .cv-document,
+    .about-intro {
+        padding: 15px 5px !important; /* Memberi sedikit ruang agar tidak terpotong di pinggir */
+        margin: 0 !important;
+        max-width: 100%;
+        text-align: left;
+        overflow: hidden;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    /* Pastikan tidak ada elemen absolute/transform bikin overflow horizontal */
+    .hero-visual,
+    .hero-img-wrapper,
+    .hero-visual::before,
+    .blob,
+    .hero::before {
+        max-width: 100% !important; /* Gunakan 100% agar tidak meluber melebihi container */
     }
 
     .section-subtitle {
